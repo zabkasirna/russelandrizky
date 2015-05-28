@@ -21,5 +21,21 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "devDependencies": {},
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "modernizr": "~2.8.3",
+    "fontawesome": "~4.3.0",
+    "waypoints": "~3.1.1",
+    "jquery.transit": "~0.9.12"
+  },
+  "overrides": {
+    "modernizr": {
+      "main": "modernizr.js"
+    },
+    "waypoints": {
+      "main": "lib/jquery.waypoints.js"
+    }
+  }
 }
