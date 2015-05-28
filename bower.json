@@ -1,0 +1,25 @@
+{
+  "name": "russelandrizky",
+  "version": "0.0.0",
+  "authors": [
+    "sirna"
+  ],
+  "description": "website for russel and rizky",
+  "main": "./content/themes/rdt-rr15/script/main.js",
+  "moduleType": [
+    "es6",
+    "node"
+  ],
+  "keywords": [
+    "randr"
+  ],
+  "license": "Proprietary",
+  "homepage": "https://github.com/zabkasirna/russelandrizky",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
