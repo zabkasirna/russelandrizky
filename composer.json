@@ -1,7 +1,7 @@
 {
     "name": "rdt/russelandrizky",
     "description": "project package for russel and rizky website",
-    "license": "Proprietary",
+    "license": "proprietary",
     "homepage": "http://russelandrizky.dev",
     "authors": [
         {
@@ -35,7 +35,7 @@
     "require": {
         "php": ">=5.3.0",
         "wordpress": "4.2.2",
-        "fancyguy/webroot-installer": "1.1.0",
+        "fancyguy/webroot-installer": "1.1.0"
     },
     "config": {
         "bin-dir": "bin/",
