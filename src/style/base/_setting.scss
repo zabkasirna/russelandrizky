@@ -19,7 +19,7 @@ $min-line-padding: 2px !default;
 $base-rhythm-unit: $base-line-height / $base-font-size * $font-unit;
 $base-leader: ($base-line-height - $base-font-size) * $font-unit / $base-font-size;
 $base-half-leader: $base-leader / 2;
-$base-border-radius: 2px;
+$base-border-radius: 0;
 
 // ----------------------------------------------------------------------------\
 // Site Typography.
@@ -130,34 +130,34 @@ $padding-base-horizontal: x(0.5);
 $input-color: $grey;
 $input-bg: $white;
 $input-height-base: x(1.5);
-$input-border: $grey-3;
+$input-border: $black;
 $input-border-radius: $base-border-radius;
-$input-border-focus: $grey-1;
-$input-color-placeholder: $grey-2;
-$input-bg-disabled: $grey-3;
+$input-border-focus: $black;
+$input-color-placeholder: $black;
+$input-bg-disabled: $grey;
 
-$state-success-text: $green;
-$state-success-bg: $green-0;
-$state-success-border: $green;
+$state-success-text: $white;
+$state-success-bg: $black;
+$state-success-border: $black;
 
-$state-info-text: $blue;
-$state-info-bg: $blue-0;
-$state-info-border: $blue;
+$state-info-text: $white;
+$state-info-bg: $black;
+$state-info-border: $black;
 
-$state-warning-text: $orange;
-$state-warning-bg: $yellow-0;
-$state-warning-border: $orange;
+$state-warning-text: $white;
+$state-warning-bg: $black;
+$state-warning-border: $black;
 
-$state-danger-text: $red;
-$state-danger-bg: $red-0;
-$state-danger-border: $red;
+$state-danger-text: $white;
+$state-danger-bg: $black;
+$state-danger-border: $black;
 
-$state-error-text: $red;
-$state-error-bg: $red-0;
-$state-error-border: $red;
+$state-error-text: $white;
+$state-error-bg: $black;
+$state-error-border: $black;
 
-$input-group-addon-bg: $grey-3;
-$input-group-addon-border-color: $input-border;
+$input-group-addon-bg: $white;
+$input-group-addon-border-color: $black;
 
 // ----------------------------------------------------------------------------\
 // Site Form.
