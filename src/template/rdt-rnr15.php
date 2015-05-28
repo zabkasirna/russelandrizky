@@ -1,6 +1,6 @@
 <?php
 /**
- * Core rdt-rr15 file
+ * Core rdt-rnr15 file
  * @author sirna <https://github.com/zabkasirna>
  * @since 0.0.0
  */

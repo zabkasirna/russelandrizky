@@ -1,6 +1,6 @@
 <?php
 /**
- * @package rdt-rr15
+ * @package rdt-rnr15
  * @subpackage index
  * @since 0.0.0
  */

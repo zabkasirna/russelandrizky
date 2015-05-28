@@ -9,7 +9,7 @@
 require_once( 'printrr.php' );
 
 // Load theme's core
-require_once( 'rdt-rr15.php' );
+require_once( 'rdt-rnr15.php' );
 
 // Conf at theme launch
 function rr_conf() {

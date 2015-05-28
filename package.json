@@ -1,8 +1,8 @@
 {
-  "name": "russelandrizky",
+  "name": "rdt-rnr15",
   "version": "0.0.0",
   "description": "website for russel and rizky",
-  "main": "./content/themes/rdt-rr15/script/main.js",
+  "main": "./content/themes/rdt-rnr15/script/main.js",
   "scripts": {
     "test": "gulp test"
   },
