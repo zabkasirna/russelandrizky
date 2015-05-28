@@ -1,14 +1,10 @@
 $font-url: 'font/';
 
-@include s-font-face( 'SansBold', 'Nexa Bold', $font-url, 700, normal );
-@include s-font-face( 'SansRegular', 'Nexa Light', $font-url, 400, normal );
-@include s-font-face( 'SansAlt', 'AnonymousPro-Regular', $font-url, 400, normal );
+@include s-font-face( 'SansBold', 'Neue Haas Grotesk Display W02 Bold', $font-url, normal, normal );
+@include s-font-face( 'SansRegular', 'Neue Haas Grotesk Text W02 Regular', $font-url, normal, normal );
+@include s-font-face( 'SansAlt', 'AnonymousPro-Regular', $font-url, normal, normal );
 
 $ff-sans-bold:      SansBold, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $ff-sans-regular:   SansRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $ff-sans-alt:       SansAlt, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $ff-sans-test:      SansBold, Georgia;
-
-// Woocommerce fonts
-@include s-font-face( 'star', 'star', $font-url, 700, normal );
-@include s-font-face( 'WooCommerce', 'WooCommerce', $font-url, 700, normal );
