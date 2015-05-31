@@ -7,10 +7,10 @@ $old: false;
 @import "vendor/normalize/normalize";
 
 /* ------ {{ compass-mixins }} ------ */
-@import "vendor/compass-mixins/compass";
-@import "vendor/compass-mixins/compass/layout";
-@import "vendor/compass-mixins/compass/support";
-@import "vendor/compass-mixins/animate";
+@import "vendor/compass-mixins/lib/compass";
+@import "vendor/compass-mixins/lib/compass/layout";
+@import "vendor/compass-mixins/lib/compass/support";
+@import "vendor/compass-mixins/lib/animate";
 
 /* ------ {{ sirna-functions }} ------ */
 @import "function/sirna-parse-int";

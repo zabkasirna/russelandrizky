@@ -31,7 +31,7 @@
     <?php // end analytics ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class( 'is-preload' ); ?>>
 
 <div id="page" class="hfeed site">
 

@@ -124,4 +124,19 @@
             }
         }
     }
+
+    // ------ {{ on load }} ------ //
+    
+    li {
+        transition: max-width 6s ease-out;
+        max-width: 100%;
+    }
+
+    .is-preload #header-nav & {
+
+        li {
+            transition: max-width 6s ease-out0;
+            max-width: 0%;
+        }
+    }
 }

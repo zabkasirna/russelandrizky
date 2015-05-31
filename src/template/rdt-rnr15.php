@@ -71,7 +71,7 @@ function rr_scripts_and_styles() {
         wp_register_script( 'rr-transit', get_template_directory_uri() . '/script/vendor/jquery.transit/jquery.transit.js', array( 'rr-jquery' ), '', true );
 
         // site
-        wp_register_script( 'rr-js', get_template_directory_uri() . '/script/main.js', array( 'rr-jquery', 'rr-clothjs' ), '', true );
+        wp_register_script( 'rr-js', get_template_directory_uri() . '/script/main.js', array( 'rr-jquery' ), '', true );
 
         // enqueue scripts
         wp_enqueue_script( 'rr-modernizr' );
