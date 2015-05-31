@@ -34,27 +34,31 @@
 <body <?php body_class(); ?>>
 
 <div id="page" class="hfeed site">
-    <header class="header">
-        <div class="header-inner">
+
+    <header id="main-header">
+
+        <div id="header-inner">
             
-            <!--
-            <div class="header-brand">
-                <a href='/' rel="nofollow" class="header-link"></a>
+            <div id="header-brand">
+                <a href='/' rel="nofollow" class="logo-link">
+                    <object type="image/svg+xml" data="<?php echo get_template_directory_uri() . '/uploads/images/logo/logo_head_default.svg' ?>" class="logo">RNR</object>
+                </a>
             </div>
-            -->
+
+            <?php 
+                $nav_main_defaults = array(
+                    'theme_location'  => 'main-navi',
+                    'container'       => 'nav',
+                    'container_class' => '',
+                    'container_id'    => 'header-nav',
+                    'menu_class'      => '',
+                    'menu_id'         => 'nav-lists',
+                    'items_wrap'      => '<ol id="%1$s">%3$s</ol>'
+                );
+
+                wp_nav_menu( $nav_main_defaults );
+            ?>
 
         </div><!-- .header-inner -->
-
-        <!-- Main Navigation -->
-        <?php 
-            $nav_main_defaults = array(
-                'theme_location'  => 'main-navi',
-                'container'       => 'nav',
-                'menu_class'      => 'nav',
-                'menu_id'         => 'nav-main'
-            );
-
-            wp_nav_menu ( $nav_main_defaults );
-        ?>
 
     </header><!-- .header -->

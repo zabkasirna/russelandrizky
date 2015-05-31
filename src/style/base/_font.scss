@@ -1,7 +1,7 @@
 $font-url: 'font/';
 
-@include s-font-face( 'SansBold', 'Neue Haas Grotesk Display W02 Bold', $font-url, normal, normal );
-@include s-font-face( 'SansRegular', 'Neue Haas Grotesk Text W02 Regular', $font-url, normal, normal );
+@include s-font-face( 'SansBold', 'BlenderPro-Thin', $font-url, normal, normal );
+@include s-font-face( 'SansRegular', 'BlenderPro', $font-url, normal, normal );
 @include s-font-face( 'SansAlt', 'AnonymousPro-Regular', $font-url, normal, normal );
 
 $ff-sans-bold:      SansBold, 'Helvetica Neue', Helvetica, Arial, sans-serif;

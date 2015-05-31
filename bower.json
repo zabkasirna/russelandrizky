@@ -22,7 +22,9 @@
     "test",
     "tests"
   ],
-  "devDependencies": {},
+  "devDependencies": {
+    "compass-mixins": "~1.0.2"
+  },
   "dependencies": {
     "jquery": "~2.1.4",
     "modernizr": "~2.8.3",
@@ -36,6 +38,9 @@
     },
     "waypoints": {
       "main": "lib/jquery.waypoints.js"
+    },
+    "compass-mixins": {
+      "ignore": true
     }
   }
 }

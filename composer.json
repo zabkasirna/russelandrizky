@@ -35,8 +35,7 @@
     "require": {
         "php": ">=5.3.0",
         "wordpress": "4.2.2",
-        "fancyguy/webroot-installer": "1.1.0",
-        "wpackagist-plugin/hide-admin-bar": "0.2.7"
+        "fancyguy/webroot-installer": "1.1.0"
     },
     "config": {
         "bin-dir": "bin/",
@@ -51,5 +50,7 @@
         }
     },
     "require-dev": {
+        "wpackagist-plugin/hide-admin-bar": "0.2.7",
+        "wpackagist-plugin/wp-optimize": "1.8.9.10"
     }
 }

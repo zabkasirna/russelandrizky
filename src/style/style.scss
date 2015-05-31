@@ -10,6 +10,7 @@ $old: false;
 @import "vendor/compass-mixins/compass";
 @import "vendor/compass-mixins/compass/layout";
 @import "vendor/compass-mixins/compass/support";
+@import "vendor/compass-mixins/animate";
 
 /* ------ {{ sirna-functions }} ------ */
 @import "function/sirna-parse-int";
@@ -29,6 +30,10 @@ $old: false;
 @import "base/setting";
 
 /* ------ {{ global object }} ------ */
+@import "object/global/element";
+@import "object/global/page";
+@import "object/global/main-head";
+@import "object/global/logo";
 
 /* ------ {{ vendors }} ------ */
 @import "vendor/fontawesome/font-awesome";

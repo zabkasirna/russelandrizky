@@ -1,0 +1,127 @@
+#main-header {
+    position: absolute;
+    top: r(1);
+    left: r(1);
+}
+
+#header-inner {
+    @include clearfix;
+    height: x(3);
+    // box-sizing: content-box;
+}
+
+#header-brand {
+    display: block;
+    float: left;
+
+    width: x(7);
+    height: x(3);
+}
+
+#header-nav {
+
+    float: left;
+    height: 100%;
+}
+
+#nav-lists {
+
+    @include clearfix;
+
+    margin: 0;
+    padding: 0;
+    list-style: none outside none;
+
+    height: 100%;
+
+    li {
+
+        float: left;
+
+        font-size: 11px;
+        height: x(3);
+
+        margin: 0 0 0 0;
+
+        background-color: $grey;
+        color: $white;
+
+        position: relative;
+        overflow: hidden;
+
+        // ------ {{ list style type }} ------ //
+
+        // http://www.w3schools.com/cssref/playit.asp?filename=playcss_ol_list-style-type&preval=decimal-leading-zero
+        // http://stackoverflow.com/questions/5945161/html-css-ordered-list-without-the-period
+        // https://developer.mozilla.org/en-US/docs/Web/CSS/counter-increment
+
+        counter-increment: rnr-counter;
+
+        &:before {
+            content: counter( rnr-counter, decimal-leading-zero ) " ";
+
+            color: $white;
+            font-size: 11px;
+            line-height: x(1);
+            height: x(1);
+
+            position: absolute;
+            top: r(0.75);
+            left: 1.5em;
+        }
+
+        // ------ {{ border }} ------ //
+
+        border-top: 1px solid $white;
+        border-bottom: 1px solid $white;
+
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 0;
+            height: x(1.5);
+            width: 100%;
+            border-top: 1px solid $white;
+            border-right: 1px solid $white;
+            pointer-events: none;
+        }
+        &:last-of-type {
+
+            border-right: 1px solid $white;
+
+            &:after {
+                border-right: none;
+            }
+        }
+
+        // border-top: 1px solid $white;
+        // border-right: 1px solid $white;
+        // &:last-of-type { border-right: none; }
+
+
+        // ------ {{ border }} ------ //
+
+        a {
+            display: block;
+
+            color: $white;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+
+            height: x(1.5);
+            line-height: x(1.5);
+
+            margin: -2px 0 0 0;
+            padding: 0 5em 0 1.5em;
+
+            position: relative;
+            top: x(1.5);
+
+            &:hover {
+                background-color: $white;
+                color: $grey;
+            }
+        }
+    }
+}

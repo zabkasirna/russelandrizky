@@ -1,0 +1,43 @@
+/* ------ {{ html5 elements }} ------ */
+
+/* ------ {{ Box Model }} ------ */
+
+*,
+*:before,
+*:after {
+    @include box-sizing(border-box);
+}
+
+/* ------ {{ COMPASS BASELINE }} ------ */
+
+// @include establish-baseline(1rem);
+
+/* ------ {{ html }} ------ */
+
+html {
+    height: 100%;
+    min-width: 320px;
+    overflow: scroll;
+}
+
+/* ------ {{ body }} ------ */
+
+body {
+    display: block;
+    min-width: 320px;
+    color: #000;
+    font-family: $ff-sans-regular;
+    font-size: $p-font-size;
+    line-height: $p-line-height;
+
+    &.single-product {
+        height: 100%;
+        max-height: 100%;
+        overflow: scroll;
+    }
+}
+
+select {
+    height: x(1);
+    line-height: x(1);
+}
