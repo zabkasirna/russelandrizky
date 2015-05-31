@@ -11,12 +11,19 @@
  *        \   \    |  | |      /    |  . `  |   /  /_\  \   
  *    .----)   |   |  | |  |\  \----|  |\   |  /  _____  \  
  *    |_______/    |__| | _| `._____|__| \__| /__/     \__\ 
- *                                                          
+ *                                              
  */
+
+var Signature = require('./signature')
+,   Nav = require('./nav');
 
 (function( $ ) {
     
     $(function() {
+
+        Signature.init();
+
+        Nav.toggleOnLoad();
     });
 
 })(jQuery);
