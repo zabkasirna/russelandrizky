@@ -40,7 +40,7 @@
         <div id="header-inner">
             
             <div id="header-brand">
-                <a href='/' rel="nofollow" class="logo-link">
+                <a href='/' rel="nofollow" class="logo-anchor">
                     <object type="image/svg+xml" data="<?php echo get_template_directory_uri() . '/uploads/images/logo/logo_head_default.svg' ?>" class="logo">RNR</object>
                 </a>
             </div>
