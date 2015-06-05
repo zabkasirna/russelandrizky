@@ -4,6 +4,8 @@ Website for Russel+Rizky
 
 #### Task ####
 
+From cli:
+
 ``` bash
 composer update
 npm install
