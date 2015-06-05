@@ -12,3 +12,18 @@ npm install
 bower install
 gulp first
 gulp
+
+```
+
+#### Sitemap ####
+
+```
+□ home
+□ philosophy
+□ projects
+   □ identity
+   □ motion
+   □ web
+   □ advertising
+□ zine
+□ contact
