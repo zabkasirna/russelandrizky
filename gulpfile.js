@@ -16,3 +16,12 @@ gulp.task('default', function(done) {
         done
     );
 });
+
+gulp.task('first', function(done) {
+    sequence(
+        ['image'],
+        ['font'],
+        ['vendor'],
+        done
+    );
+});
