@@ -2,12 +2,9 @@
 
 Website for Russel+Rizky
 
-#### Task ####
+#### To start developing ####
 
 From cli:
-
-To start developing
-
 ``` bash
 composer update
 npm install
@@ -28,9 +25,10 @@ gulp image  # copy /src/image/**/*.{png,jpg,svg,gif} to /content/themes/rdt-rnr1
 
 ```
 
-**Important notes:**
 
-For the time being, everytime there is new package installed from bower, you have to manually run `gulp vendor` from the CLI.
+**Important notes:**
+For the time being, every packages installed from bower have to manually copied by running `gulp vendor` from the cli.
+
 
 #### Sitemap ####
 
