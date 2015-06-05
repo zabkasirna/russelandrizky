@@ -21,7 +21,7 @@ Specific tasks:
 gulp markup # copy /src/**/*.php to /content/themes/rdt-rnr15/
 gulp styles # compile scss to css
 gulp script # run browserify once without watchify
-gulp vendor # copy bower's packaged components to wp themes /content/themes/rdt-rnr15/script/vendor/
+gulp vendor # copy bower's packaged components to /content/themes/rdt-rnr15/script/vendor/
 gulp image  # copy /src/image/**/*.{png,jpg,svg,gif} to /content/themes/rdt-rnr15/uploads/images
 
 ```
@@ -44,3 +44,8 @@ For the time being, every packages installed from bower have to manually copied 
    □ advertising
 □ zine
 □ contact
+
+```
+
+#### Directories ####
+
