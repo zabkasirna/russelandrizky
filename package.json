@@ -14,18 +14,17 @@
     "randr"
   ],
   "author": "sirna",
-  "license": "Proprietary",
   "bugs": {
     "url": "https://github.com/zabkasirna/russelandrizky/issues"
   },
   "homepage": "https://github.com/zabkasirna/russelandrizky",
   "devDependencies": {
     "bower": "^1.4.1",
-    "browser-sync": "^2.7.5",
-    "browserify": "^10.2.1",
+    "browser-sync": "^2.7.6",
+    "browserify": "^10.2.3",
     "event-stream": "^3.3.1",
     "glob-stream": "^5.0.0",
-    "gulp": "^3.8.11",
+    "gulp": "^3.9.0",
     "gulp-autoprefixer": "^2.3.0",
     "gulp-cached": "^1.1.0",
     "gulp-changed": "^1.2.1",
@@ -55,6 +54,6 @@
     "stringify": "^3.1.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.2.1",
-    "yargs": "^3.9.1"
+    "yargs": "^3.10.0"
   }
 }

@@ -22,7 +22,6 @@ get_header(); ?>
                         <?php the_content(); ?>
                     </section>
                 </div>
-
                 <?php endwhile; ?>
             </div>
     
