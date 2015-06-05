@@ -46,6 +46,3 @@ For the time being, every packages installed from bower have to manually copied 
 □ contact
 
 ```
-
-#### Directories ####
-
