@@ -80,6 +80,10 @@ function rr_scripts_and_styles() {
         wp_enqueue_script( 'rr-transit' );
         wp_enqueue_script( 'rr-js' );
 
+        // dequeue scripts
+        wp_deregister_script( 'jquery-migrate' );
+        wp_deregister_script( 'jquery-core' );
+
         // main stylesheet
         wp_register_style( 'rr-stylesheet', get_stylesheet_directory_uri() . '/style.css', array(), '', 'all' );
 
