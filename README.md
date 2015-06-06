@@ -29,7 +29,7 @@ gulp image  # copy /src/image/**/*.{png,jpg,svg,gif} to /content/themes/rdt-rnr1
 
 **Important notes:**
 
-For the time being, every packages installed from bower have to manually copied by running `gulp vendor` from the cli.
+For the time being, every packages installed from bower have to be copied manually by running `gulp vendor` from the cli.
 
 
 #### Sitemap ####
