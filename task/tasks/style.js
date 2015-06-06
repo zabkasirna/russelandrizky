@@ -54,20 +54,23 @@ gulp.task('style:old', function() {
     ;
 });
 
-gulp.task('style:sirnaHotspot', function() {
+gulp.task('style:wp-admin', function() {
 
-    var file = 'input';
+    var file = 'wp-admin';
 
-    return gulp.src( config.styleSirnaHotspot.src + file + '.scss' )
+    return gulp.src( config.style.src + file + '.scss' )
+        .pipe(replace(/\$old\:\s*false;/g, function(str) {
+            return str.replace(/false/, "true");
+        }))
         .pipe(sourcemaps.init())
         .pipe(autoprefixer({
             browsers: 'last 2 versions',
         }))
         .pipe( sass() )
-        .pipe(sourcemaps.write('./maps'))
+        .pipe( sourcemaps.write('./maps') )
         .on( 'error', errors )
-        .pipe(gulp.dest( config.styleSirnaHotspot.dest ))
-        .pipe( size( { title: config.styleSirnaHotspot.dest + file + '.css' } ) )
+        .pipe( gulp.dest( config.style.dest ) )
+        .pipe( size( { title: config.style.dest + file + '.css' } ) )
     ;
 });
 
