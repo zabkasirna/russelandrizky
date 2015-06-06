@@ -46,3 +46,11 @@ For the time being, every packages installed from bower have to manually copied 
 □ contact
 
 ```
+
+#### WP Plugins ####
+
+| Name            | Version | via Composer |
+| --------------- | ------- | ------------ |
+| Visual Composer |         | NO           |
+| ACF             |         | NO           |
+| WP ADMIN UI CUSTOMIZE PLUGIN |         | YES      |
