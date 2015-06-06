@@ -49,8 +49,9 @@ For the time being, every packages installed from bower have to manually copied 
 
 #### WP Plugins ####
 
-| Name            | Version | via Composer |
-| --------------- | ------- | ------------ |
-| Visual Composer |         | NO           |
-| ACF             |         | NO           |
-| WP ADMIN UI CUSTOMIZE PLUGIN |         | YES      |
+| Name            | Current version | via Composer |
+| --------------- | --------------- | ------------ |
+| Advanced Custom Fields Pro | 5.2.6 | No |
+| WP Admin Ui Customize | 1.5.3 | Yes |
+| WP Optimize | 1.8.9.10 | Yes |
+| WPBakery Visual Composer | 4.5.2 | No |
