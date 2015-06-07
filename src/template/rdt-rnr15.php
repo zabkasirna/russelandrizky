@@ -5,10 +5,6 @@
  * @since 0.0.0
  */
 
-// Load Sirna debugger
-// @todo make this automatically detect dev env
-require_once( 'printrr.php' );
-
 /**
  * HEAD CLEANUP
  */

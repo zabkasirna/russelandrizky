@@ -8,7 +8,7 @@
 
 <nav class="footer-link-outer">
     <div class="footer-link-toggler-outer">
-        <a href="#" class="footer-link-toggler">×</a>
+
     </div>
     <?php 
         // $footer_link_defaults = array(
@@ -24,6 +24,10 @@
 </nav>
 
 </div><!-- #page -->
+
+<?php
+    printrr(get_current_template());
+?>
 
 <?php wp_footer(); ?>
 
