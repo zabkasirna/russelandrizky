@@ -27,7 +27,7 @@ if (file_exists(APP_ROOT . '/config/env/local.php')) {
 // require APP_ROOT . '/config/env/development.php';
 
 /** Require Composer autoload file */
-// require APP_ROOT . '/vendor/autoload.php';
+require APP_ROOT . '/vendor/autoload.php';
 
 
 /**
