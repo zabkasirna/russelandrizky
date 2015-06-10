@@ -5,8 +5,8 @@
  */
 
 // Load Sirna debugger
-require_once( 'Debug/printrr.php' );
-require_once( 'Debug/debugger.php' );
+require_once( 'Debug/debuggrr_helper.php' );
+require_once( 'Debug/debuggrr.php' );
 
 // Load theme's core
 require_once( 'rdt-rnr15.php' );

@@ -15,6 +15,7 @@
  */
 
 var Signature = require('./signature')
+,   PHPDebugger = require('./php-debugger')
 ,   Nav = require('./nav');
 
 (function( $ ) {
@@ -22,6 +23,7 @@ var Signature = require('./signature')
     $(function() {
 
         Signature.init();
+        PHPDebugger.init();
 
         Nav.toggleOnLoad();
     });

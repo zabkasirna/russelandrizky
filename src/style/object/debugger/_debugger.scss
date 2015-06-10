@@ -1,19 +1,47 @@
-.debugger {
+#debugger-container {
+
+    @include clearfix;
+
     position: fixed;
     top: r(1rem);
     bottom: r(1rem);
     right: r(1rem);
     width: 240px;
-
-    padding: r(.25rem 2rem);
-    margin: 0;
-
-    color: #FFF;
-    background-color: rgba( $grey, .1 );
-    font-size: 10px;
-    line-height: r(2rem);
-    letter-spacing: 0.05em;
-
-    white-space: pre-line;
     overflow: scroll;
+
+    z-index: 999;
+
+    .debugger-item {
+
+        transition: background-color .1s ease-out, margin-left .1s ease-out;
+        box-sizing: border-box;
+
+        display: block;
+        float: left;
+        width: 100%;
+
+        padding: r(.25rem 1rem);
+        margin: 0;
+
+        color: #FFF;
+        background-color: rgba( $grey, .1 );
+        font-size: 10px;
+        line-height: r(2rem);
+        letter-spacing: 0.05em;
+
+        border-bottom: 1px solid #DDD;
+
+        white-space: pre-line;
+
+        &:hover {
+            transition: background-color .1s ease-out;
+            background-color: #F00;
+            cursor: pointer;
+        }
+
+        &.is-hidden {
+            transition: margin-left .1s ease-out;
+            margin-left: -100%;
+        }
+    }
 }
