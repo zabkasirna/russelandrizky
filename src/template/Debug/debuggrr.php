@@ -21,9 +21,9 @@ use DCarbone\DOMPlus\DOMElementPlus;
  *  7 - return
  */
 
-function debuggrr( $data, $exit = FALSE ) {
+function debuggrr( $data, $is_info = TRUE, $exit = FALSE ) {
 
-    if ( !isset( $data ) ) return;
+    $data = isset( $data ) ? $data : 'EMPTY LOG';
 
     if ( is_array( $data ) || is_object( $data ) ) $data = json_encode($data, JSON_PRETTY_PRINT);
 
@@ -31,8 +31,21 @@ function debuggrr( $data, $exit = FALSE ) {
 
     $div  = $dom -> createElement('pre');
     $div -> setAttribute( 'class', 'debugger-item' );
-    $text = $dom -> createTextNode( $data );
-    $div  -> appendChild($text);
+
+    $content = $dom -> createTextNode( $data );
+
+    $span = $dom -> createElement('span');
+    $span -> setAttribute( 'class', 'debugger-info' );
+
+    $dbt = debug_backtrace();
+    $fn = basename( reset( $dbt )['file'] );
+    $ln = basename( reset( $dbt )['line'] );
+
+    $info = $dom -> createTextNode( $fn . ' [' . $ln . '] ' );
+
+    if ( $is_info ) $span -> appendChild($info);
+    $div  -> appendChild($span);
+    $div  -> appendChild($content);
 
     echo $dom -> saveHTMLExact( $div );
 
