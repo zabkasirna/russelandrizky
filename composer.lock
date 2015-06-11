@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fd62c510840ba68ee5ba61ec47fb8dae",
+    "hash": "922566c573be0cced486c7c91d5ca7a8",
     "packages": [
         {
             "name": "composer/installers",
@@ -156,6 +156,26 @@
                 "fancyguy/webroot-installer": "1.1.0"
             },
             "type": "webroot"
+        },
+        {
+            "name": "wpackagist-plugin/disable-google-fonts",
+            "version": "1.1",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/disable-google-fonts/",
+                "reference": "tags/1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/disable-google-fonts.1.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/disable-google-fonts/"
         },
         {
             "name": "wpackagist-plugin/wp-admin-ui-customize",
