@@ -16,16 +16,23 @@
 
 var Signature = require('./signature')
 ,   PHPDebugger = require('./php-debugger')
-,   Nav = require('./nav');
+,   Nav = require('./nav')
+,   Logo = require('./logo')
+;
 
 (function( $ ) {
     
     $(function() {
 
+        // Setup
         Signature.init();
         PHPDebugger.init();
 
+        // Navigation
         Nav.toggleOnLoad();
+
+        // Logo
+        setTimeout( Logo.initMod(), 300 );
     });
 
 })(jQuery);
