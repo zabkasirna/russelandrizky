@@ -13,7 +13,7 @@ function initHomeOptions() {
         acf_add_options_sub_page( array(
 
             'page_title' =>  'Home Settings',
-            'menu_title' =>  'Home Settings',
+            'menu_title' =>  'Home',
             'menu_slug' =>   'rdt-rnr15-home-settings',
             'capability' =>  'manage_options',
             'parent_slug' => 'rdt-rnr15-settings',

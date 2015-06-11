@@ -7,6 +7,8 @@
  */
 
 require_once( 'home_options.php' );
+require_once( 'home_field_color.php' );
+require_once( 'debuggrr_field_toggler.php' );
 
 function initThemeOptions() {
 
@@ -14,17 +16,23 @@ function initThemeOptions() {
 
         acf_add_options_page( array(
 
-            'page_title' => 'RDT-RNR15 Settings',
-            'menu_title' => 'RDT-RNR15 Settings',
-            'menu_slug' =>  'rdt-rnr15-settings',
-            'capability' => 'manage_options',
-            'redirect' =>   false,
-            'position' =>   false,
-            'icon_url' =>   false
+            'page_title' =>  'General Settings',
+            'menu_title' =>  'RDT-RNR15 Settings',
+            'menu_slug' =>   'rdt-rnr15-settings',
+            'parent_slug' => '',
+            'capability' =>  'manage_options',
+            'redirect' =>    false,
+            'position' =>    false,
+            'icon_url' =>    false
         ) );
 
+        // Sub Page
         initHomeOptions();
     }
+
+    // Fields
+    // initDebuggrrFieldToggler();
+    // initHomeFieldColors();
 }
 
 ?>
