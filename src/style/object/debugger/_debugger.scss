@@ -25,19 +25,20 @@
         padding: r(.25rem 1rem);
         margin: 0;
 
-        color: #FFF;
+        color: rgba( #FFF, .5 );
         background-color: rgba( $grey, .1 );
         font-size: 10px;
         line-height: r(2rem);
         letter-spacing: 0.05em;
 
-        border-bottom: 1px solid rgba( $grey, .5 );
+        border-bottom: 1px solid rgba( $black, .1 );
 
         white-space: pre-line;
 
         &:hover {
             transition: background-color .1s ease-out;
             background-color: #000;
+            color: rgba( #FFF, 1 );
             cursor: pointer;
         }
 
