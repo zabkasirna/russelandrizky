@@ -104,7 +104,6 @@ function rr_admin_scripts_and_styles() {}
 
 function rr_theme_support() {
 
-
     // wp thumbnails (sizes handled in functions.php)
     add_theme_support( 'post-thumbnails' );
 
@@ -113,20 +112,27 @@ function rr_theme_support() {
 
     // wp rss
     // add_theme_support('automatic-feed-links');
-
-} /* end rr theme support */
+}
 
 /**
  * MENUS
  */
 
 // Register Navigation Menus
-function register_rr_nav_menus() {
+function rr_register_nav_menus() {
 
     $locations = array(
         'main-navi' => __( 'Site main navigations', 'text_domain' )
     );
     register_nav_menus( $locations );
+}
+
+function rr_toggle_nav_class( $classes, $item ) {
+    if ( in_array( 'current-menu-item', $classes ) ) {
+        $classes[] = 'active';
+    }
+
+    return $classes;
 }
 
 
