@@ -6,36 +6,44 @@ function init() {
 
     if ( !$('.debugger-item').length ) return;
 
-    var $container;
+    var $container, $items;
 
-    if ( !$('#debugger-container').length )
-        $('body').prepend("<div id='debugger-container'></div>");
-    
-    $container = $('#debugger-container');
+    $items = $('.debugger-item');
 
-    var $items = $('.debugger-item');
+    // Check if Debugger toggler is enabled on the body class
+    if ( $('body').hasClass('is-debugged') ) {
 
-    $items.each( function(i) {
+        if ( !$('#debugger-container').length )
+            $('body').prepend("<div id='debugger-container'></div>");
+        
+        $container = $('#debugger-container');
 
-            var $item = $(this).detach();
-            $item.appendTo($container);
+        $items.each( function(i) {
 
-            $(this).on('click', function(e) {
-                $(this).animate(
-                    {
-                        'margin-left': '-100%'
-                    },
+                var $item = $(this).detach();
+                $item.appendTo($container);
 
-                    function() {
-                        $(this).remove();
+                $(this).on('click', function(e) {
+                    $(this).animate(
+                        {
+                            'margin-left': '-100%'
+                        },
 
-                        if (!$('.debugger-item').length)
-                            $('#debugger-container').remove();
-                    }
-                );
-            });
-        }
-    );
+                        function() {
+                            $(this).remove();
+
+                            if (!$('.debugger-item').length)
+                                $('#debugger-container').remove();
+                        }
+                    );
+                });
+            }
+        );
+    } else {
+
+        if ( $('#debugger-container').length ) $('#debugger-container').remove();
+        if ( $items.length ) $items.remove();
+    }
 
 }
 
