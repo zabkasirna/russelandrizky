@@ -11,6 +11,9 @@ require_once( 'Debug/debuggrr.php' );
 // Load theme's core
 require_once( 'rdt-rnr15.php' );
 
+// Load theme's acf options page
+require_once( 'Theme_Options/theme_options.php' );
+
 // Conf at theme launch
 function rr_conf() {
 
@@ -18,7 +21,8 @@ function rr_conf() {
     add_action( 'init', 'rr_head_cleanup' );
 
     // Menu
-    add_action( 'init', 'register_rr_nav_menus' );
+    add_action( 'init', 'rr_register_nav_menus' );
+    add_filter( 'nav_menu_css_class', 'rr_toggle_nav_class', 10, 2 );
 
     // Remove wp version from rss
     add_filter( 'the_generator', 'rr_rss_version' );
@@ -31,21 +35,13 @@ function rr_conf() {
 
     // clean up random code around images
     add_filter( 'the_content', 'rr_filter_ptags_on_images' );
+
+    // Debugger
+    add_filter( 'template_include', 'var_template_include', 1000 );
+
+    // ACF Options Page
+    initThemeOptions();
 }
 
 add_action( 'after_setup_theme', 'rr_conf' );
-
-/** Navigation */
-function toggle_nav_class( $classes, $item ) {
-    if ( in_array( 'current-menu-item', $classes ) ) {
-        $classes[] = 'active';
-    }
-
-    return $classes;
-}
-
-add_filter( 'nav_menu_css_class', 'toggle_nav_class', 10, 2 );
-
-/** Debugger */
-add_filter( 'template_include', 'var_template_include', 1000 );
 ?>

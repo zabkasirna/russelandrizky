@@ -23,7 +23,9 @@ use DCarbone\DOMPlus\DOMElementPlus;
 
 function debuggrr( $data, $exit = FALSE ) {
 
-    if ( !isset($data) ) return;
+    if ( !isset( $data ) ) return;
+
+    if ( is_array( $data ) ) $data = json_encode($data);
 
     $dom = new DOMDocumentPlus;
 

@@ -27,7 +27,6 @@
 
 <?php
     debuggrr(get_current_template());
-    debuggrr(get_current_template());
 ?>
 
 <?php wp_footer(); ?>
