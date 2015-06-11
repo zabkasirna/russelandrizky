@@ -25,7 +25,7 @@ function debuggrr( $data, $exit = FALSE ) {
 
     if ( !isset( $data ) ) return;
 
-    if ( is_array( $data ) ) $data = json_encode($data);
+    if ( is_array( $data ) || is_object( $data ) ) $data = json_encode($data, JSON_PRETTY_PRINT);
 
     $dom = new DOMDocumentPlus;
 
