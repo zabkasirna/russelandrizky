@@ -44,10 +44,9 @@ function register_taxonomy_project_type() {
         'show_admin_column'          => true,
         'show_in_nav_menus'          => true,
         'show_tagcloud'              => true,
-        'menu_icon'                  => 'dashicons-admin-post',
         'update_count_callback'      => 'update_project_type_cb',
     );
-    register_taxonomy( 'project_type', array( 'post', ' project', ' philosophy' ), $args );
+    register_taxonomy( 'project_type', array( 'post', 'project', 'philosophy' ), $args );
 
 }
 

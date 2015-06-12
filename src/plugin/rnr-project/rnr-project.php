@@ -38,7 +38,7 @@ function register_cpt_project() {
         'label'               => __( 'project', 'text_domain' ),
         'description'         => __( 'RNR Project Custom Post Type', 'text_domain' ),
         'labels'              => $labels,
-        'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'trackbacks', 'revisions', 'custom-fields', 'page-attributes', 'post-formats', ),
+        'supports'            => array( 'title', 'excerpt', 'author', 'thumbnail', 'revisions', 'post-formats' ),
         'taxonomies'          => array( 'project_type' ),
         'hierarchical'        => false,
         'public'              => true,
@@ -59,7 +59,7 @@ function register_cpt_project() {
 }
 
 // Hook into the 'init' action
-add_action( 'init', 'register_cpt_project', 0 )
+add_action( 'init', 'register_cpt_project', 0 );
 
 /**
  * Include the template files from the plugin dir
