@@ -67,14 +67,15 @@
 
             the_row();
 
-            // String for body inline-style
-            $body_default_bgc = get_sub_field( 'colors_default_bg' );
-
             // String for body data-attr
             $body_default_data_color = array(
                 "fg" => get_sub_field( 'colors_default_fg' ),
                 "bg" => get_sub_field( 'colors_default_bg' ),
             );
+
+            // String for body inline-style
+            $body_default_bgc = $body_default_data_color[ 'bg' ];
+            $body_default_fgc = $body_default_data_color[ 'fg' ];
 
     endwhile; endif;
 
@@ -83,19 +84,21 @@
 
             the_row();
 
-            // String for body inline-style
-            $body_custom_bgc = get_sub_field( 'colors_custom_bg' );
-
             // String for body data-attr
             $body_custom_data_color = array(
                 "fg" => get_sub_field( 'colors_custom_fg' ),
                 "bg" => get_sub_field( 'colors_custom_bg' ),
             );
 
+            // String for body inline-style
+            $body_custom_bgc = $body_custom_data_color[ 'bg' ];
+            $body_custom_fgc = $body_custom_data_color[ 'fg' ];
+
     endwhile; endif;
 
     // Apply value if only default value is overidden by custom value
     $body_bgc = 'background-color: ' . ( $body_custom_bgc ? $body_custom_bgc : $body_default_bgc ) . '; ';
+    $body_fgc = 'color: ' . ( $body_custom_fgc ? $body_custom_fgc : $body_default_fgc ) . '; ';
     $body_data_color = array(
         "fg" => ( $body_custom_data_color['fg'] ? $body_custom_data_color['fg'] : $body_default_data_color['fg'] ),
         "bg" => ( $body_custom_data_color['bg'] ? $body_custom_data_color['bg'] : $body_default_data_color['bg'] )
@@ -106,7 +109,7 @@
     <?php body_class( $body_class ); ?>
 
     <?php
-        echo ' style="' . $body_bgc . '"';
+        echo ' style="' . $body_bgc . $body_fgc . '"';
     ?>
 
     data-color='<?php echo json_encode( $body_data_color ); ?>'
