@@ -21,7 +21,7 @@ use DCarbone\DOMPlus\DOMElementPlus;
  *  7 - return
  */
 
-function debuggrr( $data, $is_info = TRUE, $exit = FALSE ) {
+function debuggrr( $data, $title_text = "", $is_info = TRUE, $exit = FALSE ) {
 
     $data = isset( $data ) ? $data : 'EMPTY LOG';
 
@@ -29,24 +29,40 @@ function debuggrr( $data, $is_info = TRUE, $exit = FALSE ) {
 
     $dom = new DOMDocumentPlus;
 
+    // div.debugger-item
     $div  = $dom -> createElement('pre');
     $div -> setAttribute( 'class', 'debugger-item' );
 
+    // div.debugger-item textnode
     $content = $dom -> createTextNode( $data );
 
-    $span = $dom -> createElement('span');
-    $span -> setAttribute( 'class', 'debugger-info' );
+    // span.debugger-title
+    $span1 = $dom -> createElement('span');
+    $span1 -> setAttribute( 'class', 'debugger-title' );
 
+    // span.debugger-title textnode
+    $title = $dom -> createTextNode( $title_text . ": \n" );
+
+    // span.debugger-info
+    $span2 = $dom -> createElement('span');
+    $span2 -> setAttribute( 'class', 'debugger-info' );
+
+    // File Name & Code Line
     $dbt = debug_backtrace();
     $fn = basename( reset( $dbt )['file'] );
     $ln = basename( reset( $dbt )['line'] );
 
+    // span.debugger-info text-node
     $info = $dom -> createTextNode( $fn . ' [' . $ln . '] ' );
 
-    if ( $is_info ) $span -> appendChild($info);
-    $div  -> appendChild($span);
+    // Appendings
+    if ( $is_info ) $span2 -> appendChild($info);
+    if ( $title_text !== "" ) $span1 -> appendChild($title);
+    $div  -> appendChild($span2);
+    $div  -> appendChild($span1);
     $div  -> appendChild($content);
 
+    // Render DOM
     echo $dom -> saveHTMLExact( $div );
 
     if ( $exit ) exit;
