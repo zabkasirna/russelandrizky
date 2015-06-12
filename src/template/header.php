@@ -126,6 +126,7 @@
         <div id="header-inner">
             
             <div id="header-brand">
+                <div class="fauxborder"></div>
                 <a href='/' rel="nofollow" class="logo-anchor">
                     <object class="logo-object" type="image/svg+xml" data="<?php echo get_template_directory_uri() . '/uploads/images/logo/logo_head_default.svg' ?>">RNR</object>
                 </a>
@@ -139,7 +140,9 @@
                     'container_id'    => 'header-nav',
                     'menu_class'      => '',
                     'menu_id'         => 'nav-lists',
-                    'items_wrap'      => '<ol id="%1$s">%3$s</ol>'
+                    'items_wrap'      => '<ol id="%1$s">%3$s</ol>',
+                    'link_before'     => '<span class="fauxbg"></span>',
+                    'after'           => '<span class="fauxborder"></span>'
                 );
 
                 wp_nav_menu( $nav_main_defaults );
