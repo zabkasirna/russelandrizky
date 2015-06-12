@@ -74,13 +74,6 @@ gulp.task('style:wp-admin', function() {
     ;
 });
 
-gulp.task( 'style', function( done ) {
-    sequence(
-        [ 'style:modern' ],
-        done
-    );
-});
-
 gulp.task( 'styles', function( done ) {
     sequence(
         [ 'style:modern', 'style:old' ],
