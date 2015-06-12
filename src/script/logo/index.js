@@ -16,12 +16,27 @@ function initMod() {
         ,   _path;
 
         for ( var i = 0; i < _paths.length; i ++ ) {
-            _paths[ i ].setAttribute( 'fill', _data.bg );
+            _paths[ i ].setAttribute( 'fill', _data.fg );
         }
 
-        var $bg = $('.logo-anchor');
+        var $brandBg = $('.logo-anchor');
+        var $navlinkBg = $('#nav-lists li a .fauxbg');
+        var $borders = $('#header-brand .fauxborder, #nav-lists li, #nav-lists li a, #nav-lists li .fauxborder');
 
-        $bg.css( 'background-color', _data.fg );
+        $brandBg.css( 'background-color', _data.bg );
+        $navlinkBg.css( 'background-color', _data.fg );
+        $borders.css( 'border-color', _data.fg );
+
+        $('#nav-lists li a').each(
+
+            function(i) {
+                $(this).hover(
+
+                    function(e) { $(this).css( 'color', _data.bg ); },
+                    function(e) { $(this).css( 'color', _data.fg ); }
+                );
+            }
+        );
     });
 }
 

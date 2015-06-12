@@ -1,5 +1,5 @@
 #main-header {
-    position: absolute;
+    position: fixed;
     top: r(1);
     left: r(1);
 }
@@ -15,6 +15,20 @@
 
     width: x(7);
     height: x(3);
+
+    position: relative;
+
+    .fauxborder {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+
+        border: 1px solid $white;
+    }
 }
 
 #header-nav {
@@ -42,8 +56,7 @@
 
         margin: 0 0 0 0;
 
-        // background-color: $grey;
-        color: $white;
+        // color: inherit;
 
         position: relative;
         overflow: hidden;
@@ -59,7 +72,6 @@
         &:before {
             content: counter( rnr-counter, decimal-leading-zero ) " ";
 
-            color: $white;
             font-size: 11px;
             line-height: x(1);
             height: x(1);
@@ -75,7 +87,7 @@
         border-top: 1px solid $white;
         border-bottom: 1px solid $white;
 
-        &:after {
+        .fauxborder {
             content: "";
             display: block;
             position: absolute;
@@ -90,7 +102,9 @@
 
             border-right: 1px solid $white;
 
-            &:after {
+            & > a { border-right-width: 0; }
+
+            .fauxborder {
                 border-right: none;
             }
         }
@@ -103,15 +117,19 @@
 
             display: block;
 
-            color: $white;
+            color: inherit;
             letter-spacing: 0.1em;
             text-decoration: none;
+            text-transform: uppercase;
 
             height: x(1.5);
             line-height: x(1.5);
 
-            margin: 0 0 0 0;
+            margin: -1px 0 0 0;
             padding: 0 5em 0 1.5em;
+
+            border: none;
+            border-right: 1px solid $white;
 
             position: relative;
             top: x(1.5);
@@ -119,7 +137,7 @@
             z-index: 10;
             overflow: hidden;
 
-            &:before {
+            .fauxbg {
                 transition: top .3s ease-out;
 
                 content: "";
@@ -139,7 +157,7 @@
                 color: $grey;
                 background-color: $black;
 
-                &:before {
+                .fauxbg {
                     transition: top .3s ease-out;
 
                     top: 0;
@@ -151,14 +169,14 @@
     // ------ {{ on load }} ------ //
     
     li {
-        transition: max-width 6s ease-out;
+        transition: max-width 1s ease-out;
         max-width: 100%;
     }
 
     .is-preload #header-nav & {
 
         li {
-            transition: max-width 6s ease-out0;
+            transition: max-width 1s ease-out;
             max-width: 0%;
         }
     }
