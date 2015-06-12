@@ -11,7 +11,6 @@ Plugin URI: http://github.com/zabkasirna/russelandrizky
 Description: Plugin for Project Type Custom Taxonomy
 Author: Sirna
 Version: 0.0.0
-Since: 0.0.0
 Author URI: http://github.com/zabkasirna
 */
 
