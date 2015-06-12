@@ -6,7 +6,7 @@ function toggleOnLoad() {
 
     setTimeout( function() {
         $('body').toggleClass('is-preload');
-    }, 100);
+    }, 500 );
 }
 
 module.exports = Nav;

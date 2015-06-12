@@ -19,11 +19,9 @@ function initMod() {
             _paths[ i ].setAttribute( 'fill', _data.fg );
         }
 
-        var $brandBg = $('.logo-anchor');
         var $navlinkBg = $('#nav-lists li a .fauxbg');
         var $borders = $('#header-brand .fauxborder, #nav-lists li, #nav-lists li a, #nav-lists li .fauxborder');
 
-        $brandBg.css( 'background-color', _data.bg );
         $navlinkBg.css( 'background-color', _data.fg );
         $borders.css( 'border-color', _data.fg );
 
