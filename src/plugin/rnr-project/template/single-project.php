@@ -17,6 +17,9 @@
             <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
                 <?php
+
+                    // Header Fields
+
                     $project_header = array(
                         'layout'         => get_field( 'project_head_layout' ),
                         'color'          => get_field( 'project_head_title_color' ),
@@ -24,12 +27,27 @@
                         'excerpt_color'  => get_field( 'project_head_excerpt_color' )
                     );
 
-                    debuggrr( $project_header );
+                    // debuggrr( $project_header );
+                ?>
+
+                <?php
+
+                    $project_cover = array();
+
+                    foreach( get_field( 'project_cover_images' ) as $pci ) :
+
+                        // $project_cover[] = basename( $pci['url'] );
+                        $project_cover[] = $pci['url'];
+
+                    endforeach;
+
+                    debuggrr( $project_cover );
+
                 ?>
 
                 <article class="project-outer">
                     
-                    <header class="project-cover-outer">
+                    <header class="project-header">
                         
                         <div class="project-title-outer <?php echo $project_header[ 'layout' ]; ?>">
                             
@@ -45,6 +63,31 @@
                                 <?php echo $project_header['excerpt']; ?>
                             </div>
                         </div>
+
+
+                        <?php if ( !empty( $project_cover ) ) : ?>
+                        <div class="project-cover-outer <?php echo $project_header[ 'layout' ] === 'right' ? 'left' : 'right'; ?>">
+                            
+
+                            <ul class="project-cover">
+                                
+
+                                <?php foreach( $project_cover as $pci ) : ?>
+
+                                <li class="project-cover-lists">
+                                    
+                                    <img src="<?php echo $pci; ?>" alt="" class="project-cover-image">
+
+                                </li>
+
+                                <?php endforeach; ?>
+
+                            </ul>
+
+                        </div>
+                        <?php endif; ?>
+
+
                     </header>
                 </article>
         

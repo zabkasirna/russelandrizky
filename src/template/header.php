@@ -131,7 +131,7 @@
 
     endif;
 
-    debuggrr( $color_datas_default, 'default' );
+    // debuggrr( $color_datas_default, 'default' );
 
     // --- start of custom color data --- //
 
@@ -169,7 +169,7 @@
 
     endif;
 
-    debuggrr( $color_datas_custom, 'custom' );
+    // debuggrr( $color_datas_custom, 'custom' );
 
     // --- start target color --- //
     $color_datas = array();
@@ -180,7 +180,7 @@
     $color_datas['bg_length'] = $color_datas_custom['bg_length'] ?: $color_datas_default['bg_length'];
     $color_datas['grad_deg'] = $color_datas_custom['grad_deg'] ?: $color_datas_default['grad_deg'] ?: '0deg';
 
-    debuggrr( $color_datas, 'color_datas' );
+    // debuggrr( $color_datas, 'color_datas' );
 
     // --- start body bgc css string --- //
     
@@ -198,7 +198,7 @@
             $gradient_color_stop[] = $color_datas['bg_hex'][$i] . ' ' . $color_datas['bg_length'][$i];
         }
 
-        debuggrr( $gradient_color_stop, 'gradient_color_stop' );
+        // debuggrr( $gradient_color_stop, 'gradient_color_stop' );
 
         $gradient_string = '';
 
