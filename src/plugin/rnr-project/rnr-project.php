@@ -24,7 +24,7 @@ function register_cpt_project() {
         'name_admin_bar'      => __( 'Project', 'text_domain' ),
         'parent_item_colon'   => __( 'Parent Project:', 'text_domain' ),
         'all_items'           => __( 'All Projects', 'text_domain' ),
-        'add_new_item'        => __( 'Add New Project', 'text_domain' ),
+        'add_new_item'        => __( 'New Project Setup', 'text_domain' ),
         'add_new'             => __( 'Add New', 'text_domain' ),
         'new_item'            => __( 'New Project', 'text_domain' ),
         'edit_item'           => __( 'Edit Project', 'text_domain' ),
@@ -38,7 +38,7 @@ function register_cpt_project() {
         'label'               => __( 'project', 'text_domain' ),
         'description'         => __( 'RNR Project Custom Post Type', 'text_domain' ),
         'labels'              => $labels,
-        'supports'            => array( 'title', 'excerpt', 'author', 'thumbnail', 'revisions', 'post-formats' ),
+        'supports'            => array( 'author', 'thumbnail', 'revisions', 'post-formats' ),
         'taxonomies'          => array( 'project_type' ),
         'hierarchical'        => false,
         'public'              => true,
@@ -52,6 +52,7 @@ function register_cpt_project() {
         'has_archive'         => true,
         'exclude_from_search' => false,
         'publicly_queryable'  => true,
+        'rewrite'             => $rewrite,
         'capability_type'     => 'post',
     );
     register_post_type( 'project', $args );

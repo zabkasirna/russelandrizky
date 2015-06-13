@@ -42,6 +42,9 @@
 
     $body_class = array();
 
+    // Add preload toggler to body class
+    $body_class[] = 'is-preload';
+
     // Add Debuggrr toggler to body class
     if( get_field( 'enable_debuggrr', 'options' ) ) :
         $is_debugged = get_field( 'enable_debuggrr', 'options' );
@@ -51,57 +54,176 @@
         endif;
 
     endif;
-
-    // Add preload toggler to body class
-    $body_class[] = 'is-preload';
-
 ?>
 
 <?php
     
-    // Body Color
-    $body_data_color = array();
+    /**
+     * data design structure for bg type is solid
+     * {
+     *     [ 'fg' ] => string(n) 'hex',
+     *     [ 'bg_type' ] => string(n) 'is_solid',
+     *     [ 'bg' ] => string(n) 'hex',
+     * }
+     *
+     * data design structure for bg type is linear
+     * {
+     *     [ 'fg_hex' ] => string(n) 'hex',
+     *     [ 'bg_type' ] => string(n) 'is_linear',
+     *     [ 'bg_hex' ] => array(n) [ 'hex1', ..., 'hexN' ],
+     *     [ 'bg_length' ] => array(n) [ 'length1', ..., 'lengthN' ],
+     *     [ 'grad_deg' ] => int(n) 0 ... 359
+     * }
+     *
+     * data design structure for bg type is radial
+     * {
+     *     [ 'fg_hex' ] => string(n) 'hex',
+     *     [ 'bg_type' ] => string(n) 'is_linear',
+     *     [ 'bg_hex' ] => array(n) [ 'hex1', ..., 'hexN' ],
+     *     [ 'bg_length' ] => array(n) [ 'length1', ..., 'lengthN' ]
+     * }
+     */
 
-    // Get Default Color
-    if ( have_rows( 'default_colors', 'options' ) ) : while ( have_rows( 'default_colors', 'options' ) ) :
+    // --- start of default color data --- //
 
-            the_row();
+    // get default background type
+    $bg_type_default = get_field( 'default_bg_type', 'options' ) ?: 'is_solid';
 
-            // String for body data-attr
-            $body_default_data_color = array(
-                "fg" => get_sub_field( 'colors_default_fg' ),
-                "bg" => get_sub_field( 'colors_default_bg' ),
-            );
+    // set sefault Color
+    $color_datas_default = array();
 
-            // String for body inline-style
-            $body_default_bgc = $body_default_data_color[ 'bg' ];
-            $body_default_fgc = $body_default_data_color[ 'fg' ];
+    // populate conditionally
+    if ( $bg_type_default == 'is_solid' ) :
 
-    endwhile; endif;
+        $color_datas_default['fg_hex'] = get_field( 'default_fg_hex', 'options' ) ?: '#FFFFFF';
+        $color_datas_default['bg_type'] = get_field( 'default_bg_type', 'options' );
+        $color_datas_default['bg_hex'] = get_field( 'default_bg_hex_solid', 'options' ) ?: '#333333';
 
-    // Get Custom Color
-    if ( have_rows( 'custom_colors', $post_id ) ) : while ( have_rows( 'custom_colors', $post_id ) ) :
+    elseif ( $bg_type_default == 'is_linear' || $bg_type_default == 'is_radial' ) :
 
-            the_row();
+        $color_datas_default['fg_hex'] = get_field( 'default_fg_hex', 'options' ) ?: '#FFFFFF';
+        $color_datas_default['bg_type'] = get_field( 'default_bg_type', 'options' );
 
-            // String for body data-attr
-            $body_custom_data_color = array(
-                "fg" => get_sub_field( 'colors_custom_fg' ),
-                "bg" => get_sub_field( 'colors_custom_bg' ),
-            );
+        $temp_default_bg_gradient = get_field( 'default_bg_gradient', 'options' );
 
-            // String for body inline-style
-            $body_custom_bgc = $body_custom_data_color[ 'bg' ];
-            $body_custom_fgc = $body_custom_data_color[ 'fg' ];
+        $color_datas_default['bg_hex'] = array();
+        $color_datas_default['bg_length'] = array();
 
-    endwhile; endif;
+        for ( $i = 0; $i < count( $temp_default_bg_gradient ); ++ $i ) {
 
-    // Apply value if only default value is overidden by custom value
-    $body_bgc = 'background-color: ' . ( $body_custom_bgc ? $body_custom_bgc : $body_default_bgc ) . '; ';
-    $body_fgc = 'color: ' . ( $body_custom_fgc ? $body_custom_fgc : $body_default_fgc ) . '; ';
+            $color_datas_default['bg_hex'][$i] = $temp_default_bg_gradient[ $i ]['default_bg_gradient_hex'];
+            $color_datas_default['bg_length'][$i] = $temp_default_bg_gradient[ $i ]['default_bg_gradient_length'] . '%';
+
+        }
+
+        if ( $bg_type_default == 'is_linear' ) $color_datas_default['grad_deg'] = get_field( 'default_grad_deg', 'options' ) . 'deg';
+
+    endif;
+
+    debuggrr( $color_datas_default, 'default' );
+
+    // --- start of custom color data --- //
+
+    // get custom background type
+    $bg_type_custom = get_field( 'custom_bg_type', $post_id ) ?: 'is_solid';
+
+    // set custom Color
+    $color_datas_custom = array();
+
+    // populate conditionally
+    if ( $bg_type_custom == 'is_solid' ) :
+
+        $color_datas_custom['fg_hex'] = get_field( 'custom_fg_hex', $post_id );
+        $color_datas_custom['bg_type'] = get_field( 'custom_bg_type', $post_id );
+        $color_datas_custom['bg_hex'] = get_field( 'custom_bg_hex_solid', $post_id );
+
+    elseif ( $bg_type_custom == 'is_linear' || $bg_type_custom == 'is_radial' ) :
+
+        $color_datas_custom['fg_hex'] = get_field( 'custom_fg_hex', $post_id );
+        $color_datas_custom['bg_type'] = get_field( 'custom_bg_type', $post_id );
+
+        $temp_custom_bg_gradient = get_field( 'custom_bg_gradient', $post_id );
+
+        $color_datas_custom['bg_hex'] = array();
+        $color_datas_custom['bg_length'] = array();
+
+        for ( $i = 0; $i < count( $temp_custom_bg_gradient ); ++ $i ) {
+
+            $color_datas_custom['bg_hex'][$i] = $temp_custom_bg_gradient[ $i ]['custom_bg_gradient_hex'];
+            $color_datas_custom['bg_length'][$i] = $temp_custom_bg_gradient[ $i ]['custom_bg_gradient_length'] . '%';
+
+        }
+
+        if ( $bg_type_custom == 'is_linear' ) $color_datas_custom['grad_deg'] = get_field( 'custom_grad_deg', $post_id ) . 'deg';
+
+    endif;
+
+    debuggrr( $color_datas_custom, 'custom' );
+
+    // --- start target color --- //
+    $color_datas = array();
+
+    $color_datas['fg_hex'] = $color_datas_custom['fg_hex'] ?: $color_datas_default['fg_hex'];
+    $color_datas['bg_type'] = $color_datas_custom['bg_type'] ?: $color_datas_default['bg_type'];
+    $color_datas['bg_hex'] = $color_datas_custom['bg_hex'] ?: $color_datas_default['bg_hex'];
+    $color_datas['bg_length'] = $color_datas_custom['bg_length'] ?: $color_datas_default['bg_length'];
+    $color_datas['grad_deg'] = $color_datas_custom['grad_deg'] ?: $color_datas_default['grad_deg'] ?: '0deg';
+
+    debuggrr( $color_datas, 'color_datas' );
+
+    // --- start body bgc css string --- //
+    
+    $body_bgc = "\r\n" . 'background-color: #FFFFFF;';
+    $gradient_color_stop = array();
+
+    if ( $color_datas['bg_type'] == 'is_solid' ) :
+
+        $body_bgc = "\r\n" . 'background-color: ' . $color_datas['bg_hex'] . '; ';
+
+    elseif ( $color_datas['bg_type'] == 'is_linear' || $color_datas['bg_type'] == 'is_radial' ) :
+
+        $key_from_bg_hex = array_keys( $color_datas['bg_hex'] );
+        for ( $i = 0; $i < count($key_from_bg_hex); ++ $i ) {
+            $gradient_color_stop[] = $color_datas['bg_hex'][$i] . ' ' . $color_datas['bg_length'][$i];
+        }
+
+        debuggrr( $gradient_color_stop, 'gradient_color_stop' );
+
+        $gradient_string = '';
+
+        if ( $color_datas['bg_type'] == 'is_linear' ) :
+
+            // 'background-image: linear-gradient( XXXdeg, #XXX XXX%, #XXX XXX% );'
+            // 'background-image: -webkit-linear-gradient( XXXdeg, #XXX XXX%, #XXX XXX% );'
+
+            $gradient_string = $color_datas['grad_deg'] . ', ' . ( implode( ', ', $gradient_color_stop ) );
+            $body_bgc .= "\r\n" . 'background-image: -webkit-linear-gradient(' . $gradient_string . ' );';
+            $body_bgc .= "\r\n" . 'background-image: -moz-linear-gradient(' . $gradient_string . ' );';
+            $body_bgc .= "\r\n" . 'background-image: -o-linear-gradient(' . $gradient_string . ' );';
+            $body_bgc .= "\r\n" . 'background-image: linear-gradient(' . $gradient_string . ' );';
+
+        elseif ( $color_datas['bg_type'] == 'is_radial' ) :
+
+            // 'background-image: radial-gradient( circle closest-corner, #XXX XXX%, #XXX XXX% );'
+            // 'background-image: -webkit-radial-gradient( circle closest-corner, #XXX XXX%, #XXX XXX% );'
+
+            $gradient_string = 'circle farthest-corner' . ', ' . ( implode( ', ', $gradient_color_stop ) );
+            $body_bgc .= "\r\n" . 'background-image: -webkit-radial-gradient( ' . $gradient_string . ' );';
+            $body_bgc .= "\r\n" . 'background-image: -moz-radial-gradient( ' . $gradient_string . ' );';
+            $body_bgc .= "\r\n" . 'background-image: -o-radial-gradient( ' . $gradient_string . ' );';
+            $body_bgc .= "\r\n" . 'background-image: gradial-radient( ' . $gradient_string . ' );';
+
+        endif;
+
+    endif;
+
+    // --- start body fgc css string --- //
+    $body_fgc = "\r\n" . 'color: ' . $color_datas['fg_hex'] . '; ';
+
+    // --- start body data-color attribute string --- //
     $body_data_color = array(
-        "fg" => ( $body_custom_data_color['fg'] ? $body_custom_data_color['fg'] : $body_default_data_color['fg'] ),
-        "bg" => ( $body_custom_data_color['bg'] ? $body_custom_data_color['bg'] : $body_default_data_color['bg'] )
+        "fg" => $color_datas['fg_hex'],
+        "bg" => is_array( $color_datas['bg_hex'] ) ? end($color_datas['bg_hex']) : $color_datas['bg_hex']
     );
 ?>
 
@@ -109,15 +231,15 @@
     <?php body_class( $body_class ); ?>
 
     <?php
-        echo ' style="' . $body_bgc . $body_fgc . '"';
+        echo ' style="' . $body_bgc . $body_fgc . "\r\n\"";
     ?>
 
     data-color='<?php echo json_encode( $body_data_color ); ?>'
 >
 
-<?php debuggrr( $post_id ); ?>
+<?php /*debuggrr( $post_id );*/ ?>
 <?php /*debuggrr( $body_class );*/ ?>
-<?php /*debuggrr( $body_data_color );*/ ?>
+<?php debuggrr( $body_data_color ); ?>
 
 <div id="page" class="hfeed site">
 
