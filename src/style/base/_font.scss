@@ -1,6 +1,6 @@
 $font-url: 'font/';
 
-@include s-font-face( 'SansBold', 'BlenderPro-Thin', $font-url, normal, normal );
+@include s-font-face( 'SansBold', 'BlenderPro-Bold', $font-url, normal, normal );
 @include s-font-face( 'SansRegular', 'BlenderPro', $font-url, normal, normal );
 @include s-font-face( 'SansAlt', 'AnonymousPro-Regular', $font-url, normal, normal );
 
