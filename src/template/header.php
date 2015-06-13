@@ -260,7 +260,7 @@
             
             <div id="header-brand">
                 <div class="fauxborder"></div>
-                <a href='/' rel="nofollow" class="logo-anchor">
+                <a href='/' rel="nofollow" class="logo-anchor" >
                     <object class="logo-object" type="image/svg+xml"
                         data="<?php echo get_template_directory_uri() . '/uploads/images/logo/logo_head_default.svg' ?>"
                         >RNR</object>

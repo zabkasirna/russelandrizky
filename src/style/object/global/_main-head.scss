@@ -2,6 +2,7 @@
     position: fixed;
     top: r(1);
     left: r(1);
+    z-index: $z-main-header;
 }
 
 #header-inner {

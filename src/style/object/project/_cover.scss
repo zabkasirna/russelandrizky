@@ -8,6 +8,7 @@
     @include clearfix;
 
     position: fixed; top: 0; right: 0; bottom: 0; left: 0;
+    height: 100%;
 }
 
 .project-title-outer {
@@ -16,5 +17,26 @@
     top: 50%;
     transform: translateY( -50% );
 
-    
+    width: 100%;
+    @include min-screen( $bp-tablet ) { width: 33.333%; }
+
+    margin: 0; float: left;
+
+    &.left { float: left; }
+    &.middle { float: none; margin: 0 auto; }
+    &.right { float: right; text-align: right; }
+
+    .project-title,
+    .project-excerpt-outer {
+        padding: 0 x( 2 );
+        text-transform: uppercase;
+    }
+
+    .project-title {
+        letter-spacing: -0.03em;
+    }
+    .project-excerpt-outer * {
+        letter-spacing: -0.01em;
+        color: inherit;
+    }
 }

@@ -28,6 +28,9 @@ function initMod() {
         $('#nav-lists li a').each(
 
             function(i) {
+
+                $(this).parent().css( 'color', _data.fg );
+
                 $(this).hover(
 
                     function(e) { $(this).css( 'color', _data.bg ); },

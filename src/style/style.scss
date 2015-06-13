@@ -28,6 +28,7 @@ $old: false;
 @import "base/font";
 @import "base/color";
 @import "base/setting";
+@import "base/z";
 
 /* ------ {{ global object }} ------ */
 @import "object/global/element";
@@ -40,6 +41,7 @@ $old: false;
 @import "vendor/fontawesome/font-awesome";
 
 /* ------ {{ non-global object }} ------ */
+@import "object/project/cover";
 
 /* ------ {{ debugger }} ------ */
 @import "object/debugger/debugger";
