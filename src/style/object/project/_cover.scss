@@ -1,0 +1,20 @@
+.project-cover-outer {
+
+    // Vertical centering
+    // http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
+    
+    transform-style: preserve-3d;
+
+    @include clearfix;
+
+    position: fixed; top: 0; right: 0; bottom: 0; left: 0;
+}
+
+.project-title-outer {
+
+    position: relative;
+    top: 50%;
+    transform: translateY( -50% );
+
+    
+}
