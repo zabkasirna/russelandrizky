@@ -48,8 +48,8 @@ em, i, .italic {
         line-height: nth($h-lh, $i);
         // margin-top: nth($h-mt, $i);
         // margin-bottom: nth($h-mb, $i);
-        margin-top: x(1);
-        margin-bottom: x(1);
+        margin-top: x(.5);
+        margin-bottom: x(.5);
 
         font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
 
@@ -71,7 +71,7 @@ p {
     font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
 
     & + & {
-        margin-top: $p-margin-top;
+        margin-top: x(.5);
     }
 
     &:last-of-type {
