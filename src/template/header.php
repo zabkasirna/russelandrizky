@@ -37,6 +37,16 @@
 ?>
 
 <?php
+    /*
+        debuggrr( get_field( 'test_fg', 'options' ) ? get_field( 'test_fg', 'options' ) : '#FFFFFF', "test_fg" );
+        debuggrr( get_field( 'test_bg_type', 'options' ) ? get_field( 'test_bg_type', 'options' ) : 0, "test_bg_type" );
+        debuggrr( get_field( 'test_solid_bg', 'options' ) ? get_field( 'test_solid_bg', 'options' ) : '#XXX', "test_solid_bg" );
+        debuggrr( get_field( 'test_gradient_angle', 'options' ) ? get_field( 'test_gradient_angle', 'options' ) : 361, "test_gradient_angle" );
+        debuggrr( get_field( 'test_gradient_bg', 'options' ) ? get_field( 'test_gradient_bg', 'options' ) : array(), "test_gradient_bg" );
+    */
+?>
+
+<?php
 
     // Body css class modifiers
 
@@ -49,9 +59,7 @@
     if( get_field( 'enable_debuggrr', 'options' ) ) :
         $is_debugged = get_field( 'enable_debuggrr', 'options' );
 
-        if ( $is_debugged ) :
-            $body_class[] = 'is-debugged';
-        endif;
+        if ( $is_debugged ) $body_class[] = 'is-debugged';
 
     endif;
 ?>
@@ -82,7 +90,10 @@
      *     [ 'bg_hex' ] => array(n) [ 'hex1', ..., 'hexN' ],
      *     [ 'bg_length' ] => array(n) [ 'length1', ..., 'lengthN' ]
      * }
-     */
+     */    
+?>
+
+<?php
 
     // --- start of default color data --- //
 
@@ -230,16 +241,16 @@
 <body
     <?php body_class( $body_class ); ?>
 
-    <?php
-        echo ' style="' . $body_bgc . $body_fgc . "\r\n\"";
-    ?>
+    <?php echo ' style="' . $body_bgc . $body_fgc . "\r\n\"\r\n"; ?>
 
     data-color='<?php echo json_encode( $body_data_color ); ?>'
 >
 
-<?php /*debuggrr( $post_id );*/ ?>
-<?php /*debuggrr( $body_class );*/ ?>
-<?php debuggrr( $body_data_color ); ?>
+<?php
+    // debuggrr( $post_id );
+    // debuggrr( $body_class );
+    // debuggrr( $body_data_color );
+?>
 
 <div id="page" class="hfeed site">
 
@@ -250,7 +261,9 @@
             <div id="header-brand">
                 <div class="fauxborder"></div>
                 <a href='/' rel="nofollow" class="logo-anchor">
-                    <object class="logo-object" type="image/svg+xml" data="<?php echo get_template_directory_uri() . '/uploads/images/logo/logo_head_default.svg' ?>">RNR</object>
+                    <object class="logo-object" type="image/svg+xml"
+                        data="<?php echo get_template_directory_uri() . '/uploads/images/logo/logo_head_default.svg' ?>"
+                        >RNR</object>
                 </a>
             </div>
 

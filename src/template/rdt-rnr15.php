@@ -146,16 +146,17 @@ function rr_filter_ptags_on_images($content){
     return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
 }
 
-/**
- * PO Campaign Plugin
- * [ http://justintadlock.com/archives/2010/02/02/showing-custom-post-types-on-your-home-blog-page ]
- */
-function get_campaign_for_home( $query ) {
+// Move author metabox on wp-admin
+function remove_author_metabox() {
+    remove_meta_box( 'authordiv', 'post', 'normal' );
+}
 
-    if ( is_home() && $query->is_main_query() )
-        $query->set( 'post_type', array( 'campaign' ) );
-
-    return $query;
+function move_author_to_publish_metabox() {
+    global $post_ID;
+    $post = get_post( $post_ID );
+    echo '<div id="author" class="misc-pub-section" style="border-top-style:solid; border-top-width:1px; border-top-color:#EEEEEE; border-bottom-width:0px;">Author: ';
+    post_author_meta_box( $post );
+    echo '</div>';
 }
 
 ?>

@@ -38,7 +38,7 @@ function register_cpt_project() {
         'label'               => __( 'project', 'text_domain' ),
         'description'         => __( 'RNR Project Custom Post Type', 'text_domain' ),
         'labels'              => $labels,
-        'supports'            => array( 'author', 'thumbnail', 'revisions', 'post-formats' ),
+        'supports'            => array( 'title', 'author', 'thumbnail', 'revisions', 'post-formats' ),
         'taxonomies'          => array( 'project_type' ),
         'hierarchical'        => false,
         'public'              => true,
