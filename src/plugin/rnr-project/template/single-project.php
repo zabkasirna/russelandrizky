@@ -34,12 +34,13 @@
 
                     $project_cover = array();
 
+                    if ( get_field( 'project_cover_images' ) ) :
                     foreach( get_field( 'project_cover_images' ) as $pci ) :
 
                         // $project_cover[] = basename( $pci['url'] );
                         $project_cover[] = $pci['url'];
 
-                    endforeach;
+                    endforeach; endif;
 
                     debuggrr( $project_cover );
 
@@ -66,6 +67,45 @@
 
 
                         <?php if ( !empty( $project_cover ) ) : ?>
+
+                        <svg height="0" id="pcm_svg">
+                          <mask id="pcm_fade_left"
+                                maskUnits="objectBoundingBox"
+                                maskContentUnits="objectBoundingBox">
+
+                            <linearGradient id="pcm_fade_left_grad"
+                                            gradientUnits="objectBoundingBox"
+                                            x2="1" y2="0">
+
+                              <stop stop-color="black" stop-opacity="0" offset="0"></stop>
+                              <stop stop-color="black" stop-opacity="1" offset="0.5"></stop>
+                            </linearGradient>
+
+                            <rect x="0" y="0"
+                                  width="1" height="1"
+                                  fill="url(#pcm_fade_left_grad)"
+                            ></rect>
+                          </mask>
+
+                          <mask id="pcm_fade_right"
+                                maskUnits="objectBoundingBox"
+                                maskContentUnits="objectBoundingBox">
+
+                            <linearGradient id="pcm_fade_right_grad"
+                                            gradientUnits="objectBoundingBox"
+                                            x2="1" y2="0">
+
+                              <stop stop-color="black" stop-opacity="0" offset="0.5"></stop>
+                              <stop stop-color="black" stop-opacity="1" offset="1"></stop>
+                            </linearGradient>
+
+                            <rect x="0" y="0"
+                                  width="1" height="1"
+                                  fill="url(#pcm_fade_right_grad)"
+                            ></rect>
+                          </mask>
+                        </svg>
+
                         <div class="project-cover-outer <?php echo $project_header[ 'layout' ] === 'right' ? 'left' : 'right'; ?>">
                             
 
@@ -85,6 +125,7 @@
                             </ul>
 
                         </div>
+
                         <?php endif; ?>
 
 

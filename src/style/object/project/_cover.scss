@@ -1,3 +1,5 @@
+#pcm_svg { position: absolute; }
+
 .project-cover-outer {
 
     // Vertical centering
@@ -46,14 +48,41 @@
         }
     }
 
-    &.left { float: left; text-align: left; .project-cover-image { left: 0; right: auto; } }
+    &.left { float: left; text-align: left; .project-cover-image { left: auto; right: 0; } }
     &.middle { float: none; margin: 0 auto; text-align: center; }
-    &.right { float: right; text-align: right; .project-cover-image { left: auto; right: 0; } }
+    &.right { float: right; text-align: right; .project-cover-image { left: 0; right: auto; } }
+
+    // Mask
+    &.left {
+        -webkit-mask-image:
+            -webkit-gradient(linear, left top, right top,
+            from(rgba(0, 0, 0, 1)),
+            color-stop(.5, rgba(0, 0, 0, 1)),
+            color-stop(1, rgba(0, 0, 0, 0)),
+            to(rgba(0, 0, 0, 0)));
+        mask: url(#pcm_fade_right);
+    }
+
+    &.right {
+        -webkit-mask-image:
+            -webkit-gradient(linear, left top, right top,
+            from(rgba(0, 0, 0, 0)),
+            color-stop(.5, rgba(0, 0, 0, 1)),
+            to(rgba(0, 0, 0, 1)));
+        mask: url(#pcm_fade_left);
+    }
 
 }
 
 .project-cover-outer {
 
-    .flex-control-nav { bottom: 0; }
+    .flex-control-nav {
+        bottom: 0;
+        width: 100vw;
+    }
+
+    &.right .flex-control-nav { left: -50%; }
+    &.left .flex-control-nav { left: 0; }
+
     .flex-control-paging li a { border-radius: 0; }
 }
