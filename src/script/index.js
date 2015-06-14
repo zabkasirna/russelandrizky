@@ -33,6 +33,17 @@ var Signature = require('./signature')
 
         // Logo
         setTimeout( Logo.initMod(), 300 );
+
+
+        $('.project-cover-outer').flexslider({
+            animation: "slide",
+            controlNav: true,
+            directionNav: true,
+            selector: '.project-cover > .project-cover-lists',
+            itemWidth: 850
+        });
+
+
     });
 
 })(jQuery);

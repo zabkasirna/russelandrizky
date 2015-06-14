@@ -6,8 +6,10 @@
     top: 50%;
     transform: translateY( -50% );
 
+    z-index: $z-project-title;
+
     width: 100%;
-    @include min-screen( $bp-tablet ) { position: absolute; }
+    // @include min-screen( $bp-tablet ) { position: absolute; }
     @include min-screen( $bp-tablet ) { width: 33.333%; }
 
     margin: 0; float: left;
