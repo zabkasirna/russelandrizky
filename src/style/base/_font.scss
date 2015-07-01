@@ -2,9 +2,11 @@ $font-url: 'font/';
 
 @include s-font-face( 'SansBold', 'BlenderPro-Medium', $font-url, normal, normal );
 @include s-font-face( 'SansRegular', 'BlenderPro', $font-url, normal, normal );
+@include s-font-face( 'SansThin', 'BlenderPro-Thin', $font-url, normal, normal );
 @include s-font-face( 'SansAlt', 'AnonymousPro-Regular', $font-url, normal, normal );
 
 $ff-sans-bold:      SansBold, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $ff-sans-regular:   SansRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$ff-sans-thin:   SansRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $ff-sans-alt:       SansAlt, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $ff-sans-test:      SansBold, Georgia;

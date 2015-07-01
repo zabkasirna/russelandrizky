@@ -1,0 +1,52 @@
+.project-desc {
+
+    // @include clearfix;
+
+    margin: 100% 0 0 0;
+    z-index: $z-project-desc;
+
+    width: 100%;
+
+}
+
+.pd-section {
+    // @include clearfix;
+
+    width: 100%;
+    padding: x(1) 0;
+    position: relative;
+
+    // &:last-child {
+    //     min-height: 100vh;
+    // }
+
+    p {
+        margin: 0 0 x(1) 0;
+        &:last-child { margin: 0; }
+    }
+
+    .pd-copy {
+
+        width: 100%;
+
+        @include min-screen( $bp-tablet ) {
+            &.is_left { padding: 0 66.66% 0 x(1); }
+            &.is_middle { padding: 0 33.333%; }
+            &.is_right { padding: 0 x(1) 0 66.66%; }
+        }
+
+        &.yell {
+            text-transform: uppercase;
+            font-family: $ff-sans-thin;
+        }
+
+        &.shout {
+            text-transform: uppercase;
+            font-family: $ff-sans-bold;
+        }
+
+        &.speak {
+            font-family: $ff-sans-thin;
+        }
+    }
+}
