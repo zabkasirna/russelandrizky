@@ -63,7 +63,7 @@ For the time being, every packages installed from bower have to be copied manual
 | WP Optimize | 1.8.9.10 | Yes |
 | WPBakery Visual Composer | 4.5.2 | No |
 | Disable Google Fonts | 1.1 | Yes |
-| enhanced-media-library | 2.0.4.6 | Yes |
+| Enhanced Media Library | 2.0.4.6 | Yes |
 
 #### Theme's Original Plugins ####
 
