@@ -186,7 +186,7 @@
                      **------------------------------------------------------**/
                     ?>
 
-                    <?php if ( isset( $project_desc_section_x ) ) : ?>
+                    <?php if ( isset( $project_desc_section ) ) : ?>
 
                     <div class="project-desc">
 
@@ -195,26 +195,28 @@
                             <?php
                                 $__inline_style = "\r\n";
 
-                                // debuggrr( $pd_section_val['desc_sect_is_bgi'] );
-
                                 if ( !is_null($pd_section_val['desc_sect_bgi'] ) ) {
 
                                     if ( !is_null($pd_section_val['desc_sect_bgo'] ) ) {
                                         $__inline_style .= "background: url(" . $pd_section_val['desc_sect_bgo']['url'] . ") ";
-                                        $__inline_style .= $pd_section_val['desc_sect_bgo']['sizes']['large-width'] . "px ";
-                                        $__inline_style .= $pd_section_val['desc_sect_bgo']['sizes']['large-height'] . "px ";
                                         $__inline_style .= "repeat,\r\n";
                                     }
 
                                     $__inline_style .= "transparent url(" . $pd_section_val['desc_sect_bgi']['url'] . ") ";
                                     $__inline_style .= "no-repeat center center;\r\n";
+
+                                    $__inline_style .= "background-size: ";
+                                    if ( !is_null($pd_section_val['desc_sect_bgo'] ) ) {
+                                        $__inline_style .= $pd_section_val['desc_sect_bgo']['sizes']['large-width'] . "px ";
+                                        $__inline_style .= $pd_section_val['desc_sect_bgo']['sizes']['large-height'] . "px, ";
+                                    }
+                                    $__inline_style .= "cover;\r\n";
                                 }
 
                                 if( $pd_section_val['desc_sect_bgc'] !== "" ) {
                                     $__inline_style .= "background-color: ";
                                     $__inline_style .= $pd_section_val['desc_sect_bgc'] . ";\r\n";
                                 }
-
                             ?>
 
                             <div class="pd-section" style="<?php echo $__inline_style; ?>">

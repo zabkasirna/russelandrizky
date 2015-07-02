@@ -13,15 +13,10 @@
 }
 
 .pd-section {
-    // @include clearfix;
 
     width: 100%;
     padding: x(1) 0;
     position: relative;
-
-    // &:last-child {
-    //     min-height: 100vh;
-    // }
 
     p {
         margin: 0 0 x(1) 0;
@@ -32,6 +27,7 @@
 
         width: 100%;
 
+        padding: 0 x(1);
         @include min-screen( $bp-tablet ) {
             &.is_left { padding: 0 66.66% 0 x(1); }
             &.is_middle { padding: 0 33.333%; }
@@ -45,7 +41,7 @@
 
         &.shout {
             text-transform: uppercase;
-            font-family: $ff-sans-bold;
+            font-family: $ff-sans-heavy;
         }
 
         &.speak {
