@@ -1,18 +1,21 @@
 .project-title-outer {
 
-    // Vertical centering
-    // http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
     position: relative;
     top: 50%;
     transform: translateY( -50% );
 
+    float: left;
     z-index: $z-project-title;
 
-    width: 100%;
-    // @include min-screen( $bp-tablet ) { position: absolute; }
-    @include min-screen( $bp-tablet ) { width: 33.333%; }
+    @media only screen and ( orientation: landscape ) {
+        margin: 0;
+        width: 33.333%;
+    }
 
-    margin: 0; float: left;
+    @media only screen and ( orientation: portrait ) {
+        margin: 25vh 0 0 0;
+        width: 100%;
+    }
 
     &.left { float: left; }
     &.middle { float: none; margin: 0 auto; }

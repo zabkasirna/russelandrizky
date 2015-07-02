@@ -34,8 +34,11 @@
 
 #header-nav {
 
+    display: block;
     float: left;
     height: 100%;
+
+    @media only screen and ( orientation: portrait ) { display: none; }
 }
 
 #nav-lists {

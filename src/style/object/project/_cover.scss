@@ -2,77 +2,118 @@
 
 .project-cover-outer {
 
-    // Vertical centering
-    // http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
-    position: relative;
-    top: 50%;
-    transform: translateY( -50% );
-
-    z-index: $z-project-cover;
-
+    position: absolute;
+    top: 0;
     width: 100%;
-    // @include min-screen( $bp-mobile ) { position: absolute; }
-    @include min-screen( $bp-tablet ) { width: 66.600%; }
-
-    margin: 0; float: right;
+    @media only screen and ( orientation: landscape ) { height: 100%; }
+    @media only screen and ( orientation: portrait ) { height: 50%; }
+    z-index: $z-project-cover;
 
     .project-cover {
 
+        position: relative;
         list-style: none outside none;
         padding: 0;
-        min-height: 100vh;
-        height: 100vh;
+        overflow: hidden;
+
+        @media only screen and ( orientation: landscape ) {
+            min-height: 100vh;
+            max-height: 100vh;
+            height: 100vh;
+        }
+        @media only screen and ( orientation: portrait ) {
+            min-height: 50vh;
+            max-height: 50vh;
+            height: 50vh;
+        }
     }
 
     .project-cover-lists {
 
         position: relative;
+        max-height: 100%;
         height: 100%;
+        overflow: hidden;
 
-        .project-cover-image {
+        // Mask
+        &.left {
+            -webkit-mask-image:
+                -webkit-gradient(linear, left top, right top,
+                from(rgba(0, 0, 0, 1)),
+                color-stop(.5, rgba(0, 0, 0, 1)),
+                color-stop(1, rgba(0, 0, 0, 0)),
+                to(rgba(0, 0, 0, 0)));
+            mask: url(#pcm_fade_right);
+        }
 
-            min-height: 100%;
-            height: 100%;
-            min-width: initial;
-            width: auto;
-
-            @include max-screen( $bp-mobile ) {
-
-                min-height: initial;
-                height: auto;
-                min-width: 100%;
-                width: 100%;
-            }
-
-            position: absolute;
+        &.right {
+            -webkit-mask-image:
+                -webkit-gradient(linear, left top, right top,
+                from(rgba(0, 0, 0, 0)),
+                color-stop(.5, rgba(0, 0, 0, 1)),
+                to(rgba(0, 0, 0, 1)));
+            mask: url(#pcm_fade_left);
         }
     }
 
-    &.left { float: left; text-align: left; .project-cover-image { left: auto; right: 0; } }
-    &.middle { float: none; margin: 0 auto; text-align: center; }
-    &.right { float: right; text-align: right; .project-cover-image { left: 0; right: auto; } }
-
-    // Mask
-    &.left {
-        -webkit-mask-image:
-            -webkit-gradient(linear, left top, right top,
-            from(rgba(0, 0, 0, 1)),
-            color-stop(.5, rgba(0, 0, 0, 1)),
-            color-stop(1, rgba(0, 0, 0, 0)),
-            to(rgba(0, 0, 0, 0)));
-        mask: url(#pcm_fade_right);
+    .pci {
+        width: 100vw;
+        height: 100%;
     }
 
-    &.right {
-        -webkit-mask-image:
-            -webkit-gradient(linear, left top, right top,
-            from(rgba(0, 0, 0, 0)),
-            color-stop(.5, rgba(0, 0, 0, 1)),
-            to(rgba(0, 0, 0, 1)));
-        mask: url(#pcm_fade_left);
-    }
+    // &.left { float: left; text-align: left; .project-cover-image { left: auto; right: 0; } }
+    // &.middle { float: none; margin: 0 auto; text-align: center; }
+    // &.right { float: right; text-align: right; .project-cover-image { left: 0; right: auto; } }
 
 }
+
+.project-cover-lists {
+
+    .pci-outer {
+        position: relative;
+        overflow: hidden;
+
+        @media only screen and ( orientation: landscape ) {
+            min-height: 100vh;
+            max-height: 100vh;
+            height: 100vh;
+        }
+
+        @media only screen and ( orientation: portrait ) {
+            min-height: 100%;
+            max-height: 100%;
+            height: 100%;
+        }
+    }
+
+    &.full {
+
+        .pci-outer {
+
+            position: relative;
+            overflow-x: hidden;
+        }
+    }
+
+    &.half {
+
+        .pci-outer {
+
+            position: relative;
+            min-width: 66.666vw;
+            max-width: 66.666vw;
+            width: 66.666vw;
+            overflow-x: hidden;
+        }
+
+        &.left .pci-outer { left: auto; right: 0; }
+        &.middle .pci-outer { float: none; margin: 0 auto; }
+        &.right .pci-outer { left: 0; right: auto; }
+    }
+}
+
+
+// FLEXSLIDER
 
 .project-cover-outer {
 

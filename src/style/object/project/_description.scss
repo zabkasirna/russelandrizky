@@ -1,12 +1,15 @@
 .project-desc {
 
-    // @include clearfix;
+    @media only screen and ( orientation: landscape ) {
+        margin: 100vh 0 0 0;
+    }
 
-    margin: 100% 0 0 0;
-    z-index: $z-project-desc;
+    @media only screen and ( orientation: portrait ) {
+        margin: 0;
+    }
 
     width: 100%;
-
+    z-index: $z-project-desc;
 }
 
 .pd-section {

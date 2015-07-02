@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/zabkasirna/russelandrizky/issues"
   },
-  "homepage": "https://github.com/zabkasirna/russelandrizky"
+  "homepage": "https://github.com/zabkasirna/russelandrizky",
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
 }

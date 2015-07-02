@@ -18,6 +18,7 @@ var Signature = require('./signature')
 ,   PHPDebugger = require('./php-debugger')
 ,   Nav = require('./nav')
 ,   Logo = require('./logo')
+,   Project = require('./project')
 ;
 
 (function( $ ) {
@@ -34,15 +35,8 @@ var Signature = require('./signature')
         // Logo
         setTimeout( Logo.initMod(), 300 );
 
-
-        $('.project-cover-outer').flexslider({
-            animation: "slide",
-            controlNav: true,
-            directionNav: true,
-            selector: '.project-cover > .project-cover-lists',
-            itemWidth: 850
-        });
-
+        // Project
+        Project.single.initCover();
 
     });
 

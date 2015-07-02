@@ -18,7 +18,9 @@
 
                 <?php
 
-                    // Header Fields
+                    /**------------------------------------------------------**\
+                     * DATA: PROJECT HEADER
+                     **------------------------------------------------------**/
 
                     $project_header = array(
                         'layout'         => get_field( 'project_head_layout' ),
@@ -28,39 +30,48 @@
                     );
 
                     // debuggrr( $project_header );
-                ?>
 
-                <?php
 
-                    $project_cover = array();
+                    /**------------------------------------------------------**\
+                     * DATA: PROJECT COVER
+                     **------------------------------------------------------**/
 
-                    if ( get_field( 'project_cover_images' ) ) :
-                    foreach( get_field( 'project_cover_images' ) as $pci ) :
+                    $project_cover_settings = array();
 
-                        // $project_cover[] = basename( $pci['url'] );
-                        $project_cover[] = $pci['url'];
+                    if ( get_field( 'project_cover_settings' ) ) :
+                        foreach( get_field( 'project_cover_settings' ) as $pcs ) :
+                            $project_cover_settings[] = array(
+                                'src_landscape'=>$pcs['pci_source_landscape']['url'],
+                                'src_portrait'=>$pcs['pci_source_portrait']['url'],
+                                'layout'=>$pcs['pci_layout']
+                            );
 
                     endforeach; endif;
 
-                    // debuggrr( $project_cover );
+                    // debuggrr( $project_cover_settings );
 
-                ?>
 
-                <?php
+                    /**------------------------------------------------------**\
+                     * DATA: PROJECT DESCRIPTION
+                     **------------------------------------------------------**/
 
                     if ( get_field( 'project_desc_section' ) ) :
 
-                    $project_desc_section = get_field( 'project_desc_section' );
-
-                    // debuggrr( $project_desc_section );
+                        $project_desc_section = get_field( 'project_desc_section' );
 
                     endif;
 
+                    // debuggrr( $project_desc_section );
                 ?>
 
                 <article class="project-outer">
                     
-                    <!-- The Header -->
+                    <?php
+                    /**------------------------------------------------------**\
+                     * TEMPLATE: PROJECT HEADER
+                     **------------------------------------------------------**/
+                    ?>
+
                     <header class="project-header">
                         
                         <?php if ( !empty( $project_header ) ) : ?>
@@ -83,7 +94,7 @@
 
                         <?php endif; ?>
 
-                        <?php if ( !empty( $project_cover ) ) : ?>
+                        <?php if ( !empty( $project_cover_settings ) ) : ?>
 
                         <!-- The Masks -->
                         <svg height="0" id="pcm_svg">
@@ -125,17 +136,38 @@
                         </svg>
 
                         <!-- The Cover -->
-                        <div class="project-cover-outer <?php echo $project_header[ 'layout' ] === 'right' ? 'left' : 'right'; ?>">
-                            
+                        <div class="project-cover-outer">
 
                             <ul class="project-cover">
-                                
 
-                                <?php foreach( $project_cover as $pci ) : ?>
+                                <?php foreach( $project_cover_settings as $pcs ) : ?>
 
-                                <li class="project-cover-lists">
+                                <?php
+
+                                $pcs_layout_css = "project-cover-lists ";
+
+                                if ( $pcs['layout'] === 'is_full' ) $pcs_layout_css .= 'full';
+
+                                else {
+                                    if ( $project_header[ 'layout' ] === 'right' ) $pcs_layout_css .= 'half left';
+                                    else $pcs_layout_css .= 'half right';
+                                }
+
+                                $pcs_srcs = array(
+                                    'landscape' => isset( $pcs['src_landscape'] ) ? $pcs['src_landscape'] : "",
+                                    'portrait'  => isset( $pcs['src_portrait'] ) ? $pcs['src_portrait'] : ""
+                                );
+
+                                ?>
+
+                                <li class="<?php echo $pcs_layout_css; ?>">
                                     
-                                    <img src="<?php echo $pci; ?>" alt="" class="project-cover-image">
+                                    <div class="pci-outer">
+                                        <div class="pci"
+                                            data-src-landscape="<?php echo $pcs_srcs['landscape']; ?>"
+                                            data-src-portrait="<?php echo $pcs_srcs['portrait']; ?>"
+                                        ></div>
+                                    </div>
 
                                 </li>
 
@@ -148,7 +180,13 @@
                     </header>
 
 
-                    <?php if ( isset( $project_desc_section ) ) : ?>
+                    <?php
+                    /**------------------------------------------------------**\
+                     * TEMPLATE: PROJECT DESCRIPTION
+                     **------------------------------------------------------**/
+                    ?>
+
+                    <?php if ( isset( $project_desc_section_x ) ) : ?>
 
                     <div class="project-desc">
 
@@ -208,11 +246,9 @@
                             </div>
 
                         <?php endforeach; ?>
-
                     </div>
 
                     <?php endif; ?>
-
                 </article>
         
                 <?php endwhile; ?>
