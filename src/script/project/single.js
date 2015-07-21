@@ -10,6 +10,7 @@ function initCover() {
     ,   $pci = $coverOuter.find('.pci')
     ;
 
+
     $pci.each( function( i ) {
         var srcLandscape = $(this).data('src-landscape') || ''
         ,   srcPortrait = $(this).data('src-portrait') || ''
@@ -23,15 +24,17 @@ function initCover() {
         });
     });
 
-    flexsliderOptions = {
-        animation: "slide",
-        controlNav: true,
-        directionNav: false,
-        selector: '.project-cover > .project-cover-lists'
-    };
+    if ( $pci.length > 1 ) {
 
-    $coverOuter.flexslider( flexsliderOptions );
+        flexsliderOptions = {
+            animation: "slide",
+            controlNav: true,
+            directionNav: false,
+            selector: '.project-cover > .project-cover-lists'
+        };
 
+        $coverOuter.flexslider( flexsliderOptions );
+    }
 }
 
 module.exports = SingleProject;
