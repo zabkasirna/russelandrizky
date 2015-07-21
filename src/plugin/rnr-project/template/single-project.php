@@ -41,13 +41,18 @@
                     if ( get_field( 'project_cover_settings' ) ) :
                         foreach( get_field( 'project_cover_settings' ) as $pcs ) :
                             $project_cover_settings[] = array(
-                                'src_landscape'=>$pcs['pci_source_landscape']['url'],
-                                'src_portrait'=>$pcs['pci_source_portrait']['url'],
+                                'src_landscape'=> $pcs['pci_source_landscape']['url'],
+                                'src_portrait' =>
+                                    $pcs['pci_is_responsive'] ?
+                                        $pcs['pci_source_portrait']['url'] :
+                                        $pcs['pci_source_landscape']['sizes']['thumbnail']
+                                    ,
                                 'layout'=>$pcs['pci_layout']
                             );
 
                     endforeach; endif;
 
+                    // debuggrr( get_field( 'project_cover_settings' ) );
                     // debuggrr( $project_cover_settings );
 
 
@@ -61,7 +66,7 @@
 
                     endif;
 
-                    // debuggrr( $project_desc_section );
+                    debuggrr( $project_desc_section );
                 ?>
 
                 <article class="project-outer">
@@ -192,31 +197,92 @@
 
                         <?php foreach ( $project_desc_section as $pd_section_key => $pd_section_val ) : ?>
                             
+
                             <?php
+
+                                // inline style to be printed
                                 $__inline_style = "\r\n";
 
-                                if ( !is_null($pd_section_val['desc_sect_bgi'] ) ) {
+                                // background color
+                                $__desc_sect_bgc = $pd_section_val['desc_sect_bgc'] !== "" ?
+                                    $pd_section_val['desc_sect_bgc'] :
+                                    "transparent"
+                                ;
 
-                                    if ( !is_null($pd_section_val['desc_sect_bgo'] ) ) {
-                                        $__inline_style .= "background: url(" . $pd_section_val['desc_sect_bgo']['url'] . ") ";
+                                // background overlay
+                                $__desc_sect_bgo_url = "";
+                                if ( isset( $pd_section_val['desc_sect_bgo'] ) ) :
+
+                                    switch( $pd_section_val['desc_sect_bgo'] ) : case 'desc_sect_bgo_1' :
+
+                                        $__desc_sect_bgo_url .= "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAJElEQVQIW2NkYGCoZ0CABkYkgQYGBga4AJgDUghS8R/GAQkAAK9UBYHnk87BAAAAAElFTkSuQmCC";
+
+                                    break; case 'desc_sect_bgo_2' :
+
+                                        $__desc_sect_bgo_url .= "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAJklEQVQIW2NkYGD4z8DA0MAABYwMDAz1UAGwIEwAxAYJNCALgAUByNQFgQ1xvi4AAAAASUVORK5CYII=";
+
+                                    break; case 'desc_sect_bgo_3' :
+
+                                        $__desc_sect_bgo_url .= "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAI0lEQVQIW2NkYGD4z8DA0MAABYwMDAz1MA6IRhYAqWrAUAEAn1QEAdi0guwAAAAASUVORK5CYII=";
+
+                                    break; case 'desc_sect_bgo_4' :
+
+                                        $__desc_sect_bgo_url .= "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAFklEQVQIW2NkYGCoZ2BgaIBiBkbSBQDPVAYBj5BW5QAAAABJRU5ErkJggg==";
+
+                                    break; case 'desc_sect_bgo_5' :
+
+                                        $__desc_sect_bgo_url .= "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAG0lEQVQIW2NkYGCoZ0ACjAwMDP/RBTBUoAgAAGTUAoFwA9RYAAAAAElFTkSuQmCC";
+
+                                    break;
+                                endswitch; endif; 
+
+                                /**------------------------------------------------------**\
+                                 * set inline style if
+                                 * project desc background image
+                                 * is available
+                                 **------------------------------------------------------**/
+
+                                if ( isset( $pd_section_val['desc_sect_bgi']['url'] ) ) {
+
+                                    $__inline_style .= "background: ";
+
+                                    // If background overlay available
+                                    if ( $pd_section_val['desc_sect_bgo'] !== "" ) {
+                                        $__inline_style .= "url(" . $__desc_sect_bgo_url . ") ";
                                         $__inline_style .= "repeat,\r\n";
                                     }
 
-                                    $__inline_style .= "transparent url(" . $pd_section_val['desc_sect_bgi']['url'] . ") ";
+                                    $__inline_style .= $__desc_sect_bgc . " url(" . $pd_section_val['desc_sect_bgi']['url'] . ") ";
                                     $__inline_style .= "no-repeat center center;\r\n";
 
                                     $__inline_style .= "background-size: ";
-                                    if ( !is_null($pd_section_val['desc_sect_bgo'] ) ) {
-                                        $__inline_style .= $pd_section_val['desc_sect_bgo']['sizes']['large-width'] . "px ";
-                                        $__inline_style .= $pd_section_val['desc_sect_bgo']['sizes']['large-height'] . "px, ";
+
+                                    // If background overlay available
+                                    if ( $pd_section_val['desc_sect_bgo'] !== "" ) {
+                                        $__inline_style .= "4px ";
+                                        $__inline_style .= "4px, ";
                                     }
+
                                     $__inline_style .= "cover;\r\n";
                                 }
 
-                                if( $pd_section_val['desc_sect_bgc'] !== "" ) {
+                                /**------------------------------------------------------**\
+                                 * set inline style if only
+                                 * project desc background color
+                                 * which is available
+                                 **------------------------------------------------------**/
+
+                                if(
+                                    in_array('desc_sect_is_bgc', $pd_section_val['desc_sect_options']) &&
+                                    !in_array('desc_sect_is_bgi', $pd_section_val['desc_sect_options']) &&
+                                    $pd_section_val['desc_sect_bgc'] !== ""
+                                ) {
+                                    $__inline_style = "\r\n";
                                     $__inline_style .= "background-color: ";
-                                    $__inline_style .= $pd_section_val['desc_sect_bgc'] . ";\r\n";
+                                    $__inline_style .= $__desc_sect_bgc . ";\r\n";
                                 }
+
+                                debuggrr( $__inline_style );
                             ?>
 
                             <div class="pd-section" style="<?php echo $__inline_style; ?>">
