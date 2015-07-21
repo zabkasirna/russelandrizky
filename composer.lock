@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8d41e78ae0bc48db16ccd26d71384d0b",
+    "hash": "5bba328ba67613f79e7f902b18a06a12",
     "packages": [
         {
             "name": "composer/installers",
@@ -261,6 +261,26 @@
                 "smartdomdocument"
             ],
             "time": "2014-04-29 13:50:50"
+        },
+        {
+            "name": "wpackagist-plugin/add-from-server",
+            "version": "3.2.0.3",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/add-from-server/",
+                "reference": "tags/3.2.0.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/add-from-server.3.2.0.3.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/add-from-server/"
         },
         {
             "name": "wpackagist-plugin/wp-optimize",
