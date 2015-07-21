@@ -23,8 +23,16 @@
 
     .project-title,
     .project-excerpt-outer {
-        padding: 0 x( 2 );
+
         text-transform: uppercase;
+
+        @media only screen and ( orientation: landscape ) {
+            padding: 0 x( 2 );
+        }
+
+        @media only screen and ( orientation: portrait ) {
+            padding: 0 x( 1 );
+        }
     }
 
     .project-title {
