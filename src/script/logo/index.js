@@ -12,8 +12,7 @@ function initMod() {
 
     elObj.addEventListener( 'load', function() {
         svgDoc = elObj.getSVGDocument();
-        var _paths = svgDoc.querySelectorAll('path')
-        ,   _path;
+        var _paths = svgDoc.querySelectorAll('path');
 
         for ( var i = 0; i < _paths.length; i ++ ) {
             _paths[ i ].setAttribute( 'fill', _data.fg );
