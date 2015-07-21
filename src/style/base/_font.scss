@@ -4,11 +4,13 @@ $font-url: 'font/';
 @include s-font-face( 'SansHeavy', 'BlenderPro-Heavy', $font-url, normal, normal );
 @include s-font-face( 'SansBold', 'BlenderPro-Medium', $font-url, normal, normal );
 @include s-font-face( 'SansThin', 'BlenderPro-Thin', $font-url, normal, normal );
+@include s-font-face( 'SansCopy', 'Neue Haas Grotesk Text W02 Regular', $font-url, normal, normal );
 @include s-font-face( 'SansAlt', 'AnonymousPro-Regular', $font-url, normal, normal );
 
 $ff-sans-heavy:     SansHeavy, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $ff-sans-bold:      SansBold, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $ff-sans-regular:   SansRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $ff-sans-thin:      SansThin, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$ff-sans-copy:      SansCopy, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $ff-sans-alt:       SansAlt, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $ff-sans-test:      SansBold, Georgia;
