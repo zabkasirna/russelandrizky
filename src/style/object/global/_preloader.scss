@@ -1,0 +1,37 @@
+#preloader {
+    transition: background .2s ease-in;
+
+    z-index: 1010;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAG0lEQVQIW2NkYGD4z8DAwMgABXAGNgGwSgwVAFbmAgXxvZSoAAAAAElFTkSuQmCC) repeat;
+    background-color: rgba(#333, .99);
+
+    .preloader-inner {
+        transition: top 0.2s ease-out 0.2s;
+
+        display: block;
+        margin: 0 auto;
+        position: relative;
+        top: 50%;
+        transform: translateY( -50% );
+    }
+
+    &.has-loaded {
+        transition: background .2s ease-in;
+        background: none;
+        background-color: rgba(#333, 0);
+        // z-index: -1010;
+        // left: -200%;
+        
+        .preloader-inner {
+            transition: top 1s ease-out 0.2s;
+            top: -100%;
+        }
+    }
+}

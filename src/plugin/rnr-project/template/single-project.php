@@ -331,4 +331,8 @@
         </div><!-- #inner-content -->
     </div>
 
+    <div id="preloader" class="">
+        <?php include_once( get_stylesheet_directory() . '/preloader.svg' ); ?>
+    </div>
+
 <?php get_footer(); ?>
