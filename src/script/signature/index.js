@@ -19,7 +19,22 @@ function initSignature() {
 
     _logSirna += '\n\n\               http://github.com/zabkasirna\n';
 
-    console.log( _logSirna );
+    console.debug( _logSirna );
+
+    $.ajax({
+        method: 'GET',
+        url: 'https://api.github.com/repos/zabkasirna/russelandrizky/commits/master',
+        dataType: 'json'
+    })
+    .done( function(d) {
+        console.debug(
+            'latest_commit: ' + d.url
+        );
+    });
 }
 
 module.exports = Signature;
+
+/*
+https://api.github.com/repos/zabkasirna/russelandrizky/commits/master
+ */
