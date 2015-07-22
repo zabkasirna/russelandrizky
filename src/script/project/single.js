@@ -8,6 +8,7 @@ function initCover() {
 
     var $coverOuter = $('.project-cover-outer')
     ,   $pci = $coverOuter.find('.pci')
+    ,   _pciCounter = 0;
     ;
 
 
@@ -21,6 +22,16 @@ function initCover() {
                 "0px": srcPortrait,
                 "980px": srcLandscape
             }
+        });
+
+        $(this).on('loaded.background', function(e) {
+            _pciCounter ++;
+
+            if ( _pciCounter === $pci.length ) {
+                // console.log( 'finish loading cover\'s assets' );
+                $('#preloader').addClass('has-loaded');
+            }
+
         });
     });
 
