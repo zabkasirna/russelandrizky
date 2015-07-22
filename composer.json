@@ -38,6 +38,7 @@
         "fancyguy/webroot-installer": "1.1.0",
         "wpackagist-plugin/wp-admin-ui-customize": "1.5.3",
         "wpackagist-plugin/disable-google-fonts": "1.1",
+        "wpackagist-plugin/disable-emojis": "1.5",
         "wpackagist-plugin/enhanced-media-library": "2.0.4.6"
     },
     "config": {
