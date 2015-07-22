@@ -2,9 +2,18 @@
     display: block;
     width: 100%;
     height: 100%;
+    color: currentColor;
     background-color: transparent;
 
-    .logo-object {
+    &:hover,
+    &:visited,
+    &:focus,
+    &:active { color: currentColor; }
+
+    .logo {
+        width: 100%;
+        height: 100%;
+        display: block;
         pointer-events: none;
     }
 }

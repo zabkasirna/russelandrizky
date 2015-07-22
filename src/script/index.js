@@ -33,7 +33,8 @@ var Signature = require('./signature')
         Nav.toggleOnLoad();
 
         // Logo
-        setTimeout( Logo.initMod(), 300 );
+        // setTimeout( Logo.initMod(), 300 );
+        Logo.initMod();
 
         // Project
         Project.single.initCover();
