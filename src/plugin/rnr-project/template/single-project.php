@@ -66,7 +66,19 @@
 
                     endif;
 
-                    debuggrr( $project_desc_section );
+                    // debuggrr( $project_desc_section );
+                    
+                    /**------------------------------------------------------**\
+                     * DATA: PROJECT META
+                     **------------------------------------------------------**/
+
+                    if ( get_field( 'project_meta' ) ) :
+
+                        $project_meta = get_field( 'project_meta' );
+
+                    endif;
+
+                    debuggrr( $project_meta );
                 ?>
 
                 <article class="project-outer">
@@ -282,7 +294,7 @@
                                     $__inline_style .= $__desc_sect_bgc . ";\r\n";
                                 }
 
-                                debuggrr( $__inline_style );
+                                // debuggrr( $__inline_style );
                             ?>
 
                             <div class="pd-section" style="<?php echo $__inline_style; ?>">
@@ -317,6 +329,39 @@
                     </div>
 
                     <?php endif; ?>
+
+                    <?php
+                    /**------------------------------------------------------**\
+                     * TEMPLATE: PROJECT META
+                     **------------------------------------------------------**/
+                    ?>
+
+                    <?php if ( isset( $project_meta ) ) : ?>
+
+                    <div class="project-meta" style="display: none;">
+                        <ol class="project-meta-list">
+                        <?php foreach ( $project_meta as $pd_meta_key => $meta_val ) : ?>
+                            <?php switch( $meta_val['pmr_key'] ) : case 'pmr_val_client' : if ( !empty( $meta_val['pmr_val_client'] ) ) : ?>
+                                <li><span>client</span><span><?php echo $meta_val['pmr_val_client']; ?></span></li>
+                            <?php endif; break; case 'pmr_val_date' : if ( !empty( $meta_val['pmr_val_date'] ) ) : ?>
+                                <li><span>date</span><span><?php echo $meta_val['pmr_val_date']; ?></span></li>
+                            <?php endif; break; case 'pmr_val_role' : if ( !empty( $meta_val['pmr_val_role'] ) ) : ?>
+                                <li><span>role</span><span><?php echo $meta_val['pmr_val_role']; ?></span></li>
+                            <?php endif; break; case 'pmr_val_credit' : if ( !empty( $meta_val['pmr_val_credit'] ) ) : ?>
+                                <li><span>credit</span><span><?php echo $meta_val['pmr_val_credit']; ?></span></li>
+                            <?php endif; break; case 'pmr_val_custom' : if ( !empty( $meta_val['pmr_val_custom'] ) ) : ?>
+                                <li><span
+                                    ><?php echo $meta_val['pmr_val_custom'][0]['pmr_val_custom_label']; ?: "N/A"; ?></span>
+                                    <span><?php echo $meta_val['pmr_val_custom'][0]['pmr_val_custom_text'] ?: "N/A"; ?></span
+                                ></li>
+                            <?php endif; break; ?>
+                            <?php endswitch; ?>
+                        <?php endforeach; ?>
+                        </ol>
+                    </div>
+
+                    <?php endif; ?>
+
                 </article>
         
                 <?php endwhile; ?>
@@ -326,9 +371,8 @@
                 <p>no project found</p>
         
             <?php endif; ?>
-        
-            </main><!-- #main -->
-        </div><!-- #inner-content -->
+            </main>
+        </div>
     </div>
 
     <div id="preloader" class="">

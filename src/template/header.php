@@ -287,7 +287,5 @@
 
                 wp_nav_menu( $nav_main_defaults );
             ?>
-
-        </div><!-- .header-inner -->
-
-    </header><!-- .header -->
+        </div>
+    </header>

@@ -23,7 +23,7 @@
     ?>
 </nav>
 
-</div><!-- #page -->
+</div>
 
 <?php
     debuggrr(get_current_template());
