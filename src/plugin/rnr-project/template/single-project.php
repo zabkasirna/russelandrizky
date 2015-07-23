@@ -78,7 +78,7 @@
 
                     endif;
 
-                    debuggrr( $project_meta );
+                    // debuggrr( $project_meta );
                 ?>
 
                 <article class="project-outer">
@@ -205,7 +205,7 @@
 
                     <?php if ( isset( $project_desc_section ) ) : ?>
 
-                    <div class="project-desc">
+                    <div class="project-desc" >
 
                         <?php foreach ( $project_desc_section as $pd_section_key => $pd_section_val ) : ?>
                             
@@ -338,21 +338,21 @@
 
                     <?php if ( isset( $project_meta ) ) : ?>
 
-                    <div class="project-meta" style="display: none;">
+                    <div class="project-meta">
                         <ol class="project-meta-list">
                         <?php foreach ( $project_meta as $pd_meta_key => $meta_val ) : ?>
                             <?php switch( $meta_val['pmr_key'] ) : case 'pmr_val_client' : if ( !empty( $meta_val['pmr_val_client'] ) ) : ?>
-                                <li><span>client</span><span><?php echo $meta_val['pmr_val_client']; ?></span></li>
+                                <li><span class="meta-key">client</span><span class="meta-val"><?php echo $meta_val['pmr_val_client']; ?></span></li>
                             <?php endif; break; case 'pmr_val_date' : if ( !empty( $meta_val['pmr_val_date'] ) ) : ?>
-                                <li><span>date</span><span><?php echo $meta_val['pmr_val_date']; ?></span></li>
+                                <li><span class="meta-key">date</span><span class="meta-val"><?php echo $meta_val['pmr_val_date']; ?></span></li>
                             <?php endif; break; case 'pmr_val_role' : if ( !empty( $meta_val['pmr_val_role'] ) ) : ?>
-                                <li><span>role</span><span><?php echo $meta_val['pmr_val_role']; ?></span></li>
+                                <li><span class="meta-key">role</span><span class="meta-val"><?php echo $meta_val['pmr_val_role']; ?></span></li>
                             <?php endif; break; case 'pmr_val_credit' : if ( !empty( $meta_val['pmr_val_credit'] ) ) : ?>
-                                <li><span>credit</span><span><?php echo $meta_val['pmr_val_credit']; ?></span></li>
+                                <li><span class="meta-key">credit</span><span class="meta-val"><?php echo $meta_val['pmr_val_credit']; ?></span></li>
                             <?php endif; break; case 'pmr_val_custom' : if ( !empty( $meta_val['pmr_val_custom'] ) ) : ?>
-                                <li><span
-                                    ><?php echo $meta_val['pmr_val_custom'][0]['pmr_val_custom_label']; ?: "N/A"; ?></span>
-                                    <span><?php echo $meta_val['pmr_val_custom'][0]['pmr_val_custom_text'] ?: "N/A"; ?></span
+                                <li><span class="meta-key"
+                                    ><?php echo $meta_val['pmr_val_custom'][0]['pmr_val_custom_label'] ?: "N/A"; ?></span>
+                                    <span class="meta-val"><?php echo $meta_val['pmr_val_custom'][0]['pmr_val_custom_text'] ?: "N/A"; ?></span
                                 ></li>
                             <?php endif; break; ?>
                             <?php endswitch; ?>

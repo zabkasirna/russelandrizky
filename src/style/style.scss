@@ -43,11 +43,12 @@ $old: false;
 @import "vendor/flexslider/flexslider";
 @import "vendor/formstone/background";
 
-/* ------ {{ non-global object }} ------ */
+/* ------ {{ project object }} ------ */
 @import "object/project/title";
 @import "object/project/header";
 @import "object/project/cover";
 @import "object/project/description";
+@import "object/project/meta";
 
 /* ------ {{ debugger }} ------ */
 @import "object/debugger/debugger";
