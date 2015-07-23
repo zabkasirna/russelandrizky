@@ -32,6 +32,10 @@
     .project-excerpt-outer {
 
         text-transform: uppercase;
+        min-height: 0;
+        max-height: 50%;
+        height: auto;
+        overflow: scroll;
 
         @media only screen and ( orientation: landscape ) {
             padding: 0 x( 2 );
@@ -39,6 +43,15 @@
 
         @media only screen and ( orientation: portrait ) {
             padding: 0 x( 1 );
+            max-width: 50vw;
+        }
+
+        @media only screen and ( orientation: portrait ) and ( min-width: 767px ) {
+            float: inherit;
+            min-height: 50%;
+            height: 50%;
+            margin-top: 13vh;
+            max-height: 50%;
         }
     }
 
