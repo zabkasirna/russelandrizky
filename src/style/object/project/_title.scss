@@ -58,6 +58,10 @@
 
     .project-title {
         letter-spacing: -0.03em;
+        @media only screen and ( orientation: portrait ) {
+            font-size: r(2.3125);
+            line-height: x(2);
+        }
     }
 
     .project-excerpt-outer {

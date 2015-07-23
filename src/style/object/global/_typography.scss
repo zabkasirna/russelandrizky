@@ -42,6 +42,7 @@ em, i, .italic {
 // Heading.
 
 @for $i from 1 through 6 {
+    .h#{$i},
     h#{$i} {
         @if ($i > 4) {$i: 4;}
         font-size: nth($h-fz, $i);
