@@ -43,11 +43,12 @@
 
         @media only screen and ( orientation: portrait ) {
             padding: 0 x( 1 );
-            max-width: 50vw;
+            max-width: 100vw;
         }
 
         @media only screen and ( orientation: portrait ) and ( min-width: 767px ) {
             float: inherit;
+            max-width: 50vw;
             min-height: 50%;
             height: 50%;
             margin-top: 13vh;
