@@ -1,7 +1,16 @@
 .project-meta {
 
+    width: x(18);
+    padding: 0 r(1);
+
     &.is-narrow {
-        margin: x(1);
+        position: absolute;
+        width: 50%;
+
+        .project-meta-list {
+            max-width: x(18);
+            float: right;
+        }
     }
 
     .project-meta-list {
@@ -9,7 +18,7 @@
         list-style: none outside none;
 
         position: relative;
-        width: x(18);
+        width: 100%;
 
         padding: 0;
         border: 1px solid currentColor;
@@ -28,6 +37,9 @@
             margin: 0;
 
             border-bottom: 1px solid currentColor;
+
+            font-family: inherit;
+            text-transform: uppercase;
 
             &:last-child { border-bottom: none; }
 

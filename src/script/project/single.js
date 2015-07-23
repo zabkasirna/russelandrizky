@@ -50,17 +50,23 @@ function initCover() {
 }
 
 function initMeta() {
-    console.log( document.documentElement.clientWidth );
+    if ( document.documentElement.clientWidth > 1200 ) metaMoveToDesc();
 }
 
 function metaMoveToDesc() {
-    if ( !$('.project-meta').length || $('.pd-section').length ) return;
+    if ( !$('.project-meta').length || !$('.pd-section').length ) return;
 
     var $meta = $('.project-meta')
     ,   $target = $('.pd-section').first()
+    ,   _h = $meta.height()
     ;
 
-    $meta.prependTo( $target );
+    $meta
+        .prependTo( $target )
+        .addClass('is-narrow')
+        .parent()
+            .css( 'height', ( _h + 24 ) + 'px' )
+    ;
 }
 
 module.exports = SingleProject;
