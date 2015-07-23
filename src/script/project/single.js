@@ -50,10 +50,19 @@ function initCover() {
 }
 
 function initMeta() {
-    if ( document.documentElement.clientWidth > 1200 ) metaMoveToDesc();
+    if ( document.documentElement.clientWidth > 1200 ) metaSetW();
+
+    var resizeTimer;
+
+    $.mediaquery("bind", "mq-key", "(max-width: 1119px)", {
+
+        enter: function() { metaSetN(); },
+        leave: function() { metaSetW(); }
+    });
 }
 
-function metaMoveToDesc() {
+function metaSetW() {
+
     if ( !$('.project-meta').length || !$('.pd-section').length ) return;
 
     var $meta = $('.project-meta')
@@ -65,7 +74,26 @@ function metaMoveToDesc() {
         .prependTo( $target )
         .addClass('is-narrow')
         .parent()
-            .css( 'height', ( _h + 24 ) + 'px' )
+            .css( 'height', ( _h + 48 ) + 'px' )
+    ;
+}
+
+function metaSetN() {
+
+    if ( !$('.project-meta').length || !$('.project-outer').length ) return;
+
+    var $meta = $('.project-meta')
+    ,   $target = $('.project-outer')
+    ,   _h = $meta.height()
+    ;
+
+    $meta
+        .parent()
+            .css( 'height', 'auto' )
+            .end()
+        .removeClass('is-narrow')
+        .appendTo( $target )
+        ;
     ;
 }
 

@@ -1,11 +1,14 @@
 .project-meta {
 
     width: x(18);
-    padding: 0 r(1);
+    margin: 0 auto;
+    padding: x(1) 0;
 
     &.is-narrow {
         position: absolute;
         width: 50%;
+        margin: 0;
+        padding: 0 r(1);
 
         .project-meta-list {
             max-width: x(18);
