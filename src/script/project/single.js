@@ -72,7 +72,7 @@ function metaSetW() {
 
     $meta
         .prependTo( $target )
-        .addClass('is-narrow')
+        .addClass('is-wide')
         .parent()
             .css( 'height', ( _h + 48 ) + 'px' )
     ;
@@ -91,7 +91,7 @@ function metaSetN() {
         .parent()
             .css( 'height', 'auto' )
             .end()
-        .removeClass('is-narrow')
+        .removeClass('is-wide')
         .appendTo( $target )
         ;
     ;
