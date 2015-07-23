@@ -38,6 +38,7 @@ var Signature = require('./signature')
 
         // Project
         Project.single.initCover();
+        // Project.single.initMeta();
 
     });
 

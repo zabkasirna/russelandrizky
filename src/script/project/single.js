@@ -1,5 +1,6 @@
 var SingleProject = {
-    initCover: initCover
+    initCover: initCover,
+    initMeta: initMeta
 };
 
 function initCover() {
@@ -46,6 +47,20 @@ function initCover() {
 
         $coverOuter.flexslider( flexsliderOptions );
     }
+}
+
+function initMeta() {
+    console.log( document.documentElement.clientWidth );
+}
+
+function metaMoveToDesc() {
+    if ( !$('.project-meta').length || $('.pd-section').length ) return;
+
+    var $meta = $('.project-meta')
+    ,   $target = $('.pd-section').first()
+    ;
+
+    $meta.prependTo( $target );
 }
 
 module.exports = SingleProject;
