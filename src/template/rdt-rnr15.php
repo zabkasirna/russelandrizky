@@ -172,7 +172,8 @@ function remove_author_metabox() {
 function move_author_to_publish_metabox() {
     global $post_ID;
     $post = get_post( $post_ID );
-    echo '<div id="author" class="misc-pub-section" style="border-top-style:solid; border-top-width:1px; border-top-color:#EEEEEE; border-bottom-width:0px;">Author: ';
+    $_inline_style = 'style="border-top-style:solid; border-top-width:1px; border-top-color:#EEEEEE; border-bottom-width:0px;"';
+    echo '<div id="author" class="misc-pub-section"' . $_inline_style . '>Author: ';
     post_author_meta_box( $post );
     echo '</div>';
 }
