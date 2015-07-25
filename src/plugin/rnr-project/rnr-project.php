@@ -84,7 +84,7 @@ function include_project_template( $template_path ) {
         }
 
         // Include archive template
-        elseif ( is_archive() ) {
+        elseif ( is_archive() && !is_tax('project_type') ) {
 
             if ( $theme_file = locate_template( array( 'archive-project.php' ) ) ) {
                 $template_path = $theme_file;

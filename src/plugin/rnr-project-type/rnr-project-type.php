@@ -43,13 +43,30 @@ function register_taxonomy_project_type() {
         'show_ui'                    => true,
         'show_admin_column'          => true,
         'show_in_nav_menus'          => true,
-        'show_tagcloud'              => true,
-        'update_count_callback'      => 'update_project_type_cb',
+        'show_tagcloud'              => false,
+        'update_count_callback'      => '_update_post_term_count',
     );
     register_taxonomy( 'project_type', array( 'post', 'project', 'philosophy' ), $args );
-
 }
 
 // Hook into the 'init' action
 add_action( 'init', 'register_taxonomy_project_type', 0 );
+
+/**
+ * Include the template files from the plugin dir
+ * [http://wordpress.stackexchange.com/questions/50201/custom-taxonomy-in-plugin-and-template/50206#50206]
+ * [http://wordpress.stackexchange.com/questions/2126/at-what-priority-does-add-filter-overwrite-core-functions/2127#2127]
+ * [http://stackoverflow.com/questions/6369362/wordpress-filter-with-priority/6369545#6369545]
+ */
+
+function include_project_type_template( $template_path ) {
+    if ( is_tax('project_type') ) {
+        $template_path = plugin_dir_path( __FILE__ ) . 'template/taxonomy-project_type.php';
+    }
+
+    return $template_path;
+}
+
+add_filter( 'template_include', 'include_project_type_template', 11 );
+
 ?>
