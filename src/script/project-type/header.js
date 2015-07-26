@@ -7,14 +7,42 @@ function initBackground() {
     if ( !$('.pt-header-bg').length ) return;
 
     var $bgOuter = $('.pt-header-bg')
+    ,   $bgi = $bgOuter.find('.ptbg-lists')
+    ,   _bgiCounter = 0
     ;
 
-    $bgOuter.background({
-        source: {
-            "0px": $bgOuter.data('src'),
-            "980px": $bgOuter.data('src')
-        }
+    $bgi.each( function( i ) {
+        var $el = $(this).find('.ptbgi')
+        ,   srcLandscape = $el.data('src-landscape') || ''
+        ,   srcPortrait = $el.data('src-portrait') || ''
+        ;
+
+        $el.background({
+            "source": {
+                "0px": srcPortrait,
+                "980px": srcLandscape
+            }
+        });
+
+        // $(this).find('.ptbgi').on('loaded.background', function(e) {
+        //     _pciCounter ++;
+
+        //     if ( _pciCounter === $bgi.length ) {
+        //         // console.log( 'finish loading cover\'s assets' );
+        //         $('#preloader').addClass('has-loaded');
+        //     }
+
+        // });
     });
+
+    if ( $bgi.length > 1 ) {
+        $bgOuter.carousel({
+            autoAdvance: true,
+            autoTime: 2000,
+            controls: false,
+            infinite: true
+        });
+    }
 }
 
 module.exports = ProjectTypeHeader;

@@ -68,12 +68,12 @@
                 endforeach; endif;
 
                 // debuggrr( get_field( 'ptbg_settings', $_taxonomy . '_' . $_term_id ) );
-                debuggrr( $ptbgs );
+                // debuggrr( $ptbgs );
             ?>
 
-            <header class="project-type-header" style="display: none;" >
+            <header class="project-type-header" >
                 <!-- The Masks -->
-                <svg height="0" id="cover_mask_svg">
+                <svg height="0" id="cover_mask_svg" style="display: none;" >
                     <mask id="cover_mask_fade_left"
                         maskUnits="objectBoundingBox"
                         maskContentUnits="objectBoundingBox">
@@ -111,7 +111,7 @@
                     </mask>
                 </svg>
 
-                <ul class="pt-header-bg" style="display: none;" >
+                <div class="pt-header-bg">
 
                     <?php foreach( $ptbgs as $ptbg ) : ?>
 
@@ -132,19 +132,15 @@
                         );
                     ?>
 
-                    <li class="<?php echo $ptbg_layout_css; ?>">
-                        
-                        <div class="ptbgi-outer">
-                            <div class="ptbgi"
-                                data-src-landscape="<?php echo $ptbg_srcs['landscape']; ?>"
-                                data-src-portrait="<?php echo $ptbg_srcs['portrait']; ?>"
-                            ></div>
-                        </div>
-
-                    </li>
+                    <div class="<?php echo $ptbg_layout_css; ?>">
+                        <div class="ptbgi"
+                            data-src-landscape="<?php echo $ptbg_srcs['landscape']; ?>"
+                            data-src-portrait="<?php echo $ptbg_srcs['portrait']; ?>"
+                        ></div>
+                    </div>
 
                     <?php endforeach; ?>
-                </ul>
+                </div>
 
                 <div class="pt-header-fg">
                     <h1 class="pt-title"><?php echo $_queried_object->name; ?></h1>

@@ -76,6 +76,8 @@ function rr_scripts_and_styles() {
         wp_register_script( 'rr-formstone-core', get_template_directory_uri() . '/script/vendor/formstone/dist/js/core.js', array( 'rr-jquery' ), '', true );
         wp_register_script( 'rr-formstone-transition', get_template_directory_uri() . '/script/vendor/formstone/dist/js/transition.js', array( 'rr-jquery', 'rr-formstone-core' ), '', true );
         wp_register_script( 'rr-formstone-mediaquery', get_template_directory_uri() . '/script/vendor/formstone/dist/js/mediaquery.js', array( 'rr-jquery', 'rr-formstone-core' ), '', true );
+        wp_register_script( 'rr-formstone-touch', get_template_directory_uri() . '/script/vendor/formstone/dist/js/touch.js', array( 'rr-jquery', 'rr-formstone-core' ), '', true );
+        wp_register_script( 'rr-formstone-carousel', get_template_directory_uri() . '/script/vendor/formstone/dist/js/carousel.js', array( 'rr-jquery', 'rr-formstone-core', 'rr-formstone-mediaquery', 'rr-formstone-touch' ), '', true );
         wp_register_script( 'rr-formstone-bg', get_template_directory_uri() . '/script/vendor/formstone/dist/js/background.js', array( 'rr-jquery', 'rr-formstone-core', 'rr-formstone-transition' ), '', true );
 
         // site
@@ -90,7 +92,9 @@ function rr_scripts_and_styles() {
         wp_enqueue_script( 'rr-flexslider' );
         wp_enqueue_script( 'rr-formstone-core' );
         wp_enqueue_script( 'rr-formstone-mediaquery' );
+        wp_enqueue_script( 'rr-formstone-touch' );
         wp_enqueue_script( 'rr-formstone-transition' );
+        wp_enqueue_script( 'rr-formstone-carousel' );
         wp_enqueue_script( 'rr-formstone-bg' );
         wp_enqueue_script( 'rr-js' );
 
