@@ -109,14 +109,39 @@
                     </div>
                 </header>
 
-                <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+                <?php if ( have_posts() ) : ?>
 
                 <div class="pt-loop" style="display: none;" >
 
-                    <div class="post">
+                    <?php while ( have_posts() ) : the_post(); ?>
+
+                    <?php
+                        /**------------------------------------------------------**\
+                         * DATA: PAD LAYOUT
+                         **------------------------------------------------------**/
+
+                        $pad_css = '';
+
+                        if ( get_field( 'pad_layout' ) ) {
+                            switch ( get_field( 'pad_layout' )) {
+                                case 'pad_layout_0': $pad_css = 'w-full h-full'; break;
+                                case 'pad_layout_1': $pad_css = 'w-half h-full'; break;
+                                case 'pad_layout_2': $pad_css = 'w-full h-half'; break;
+                                case 'pad_layout_3': $pad_css = 'w-half h-half'; break;
+                                default: $pad_css = $pad_css; break;
+                            }
+                        }
+
+                        // debuggrr( $pad_css );
+                    ?>
+
+                    <div class="post <?php echo $pad_css; ?>">
                         <div class="post-inner">
                             <?php if ( has_post_thumbnail() ) : ?>
                                 <?php
+                                    /**------------------------------------------------------**\
+                                     * DATA: FEATURED IMAGE
+                                     **------------------------------------------------------**/
                                     $_post_img_full = wp_get_attachment_image_src( get_post_thumbnail_id(), full )[0];
                                     $_post_img_thumb = wp_get_attachment_image_src( get_post_thumbnail_id(), thumbnail )[0];
                                 ?>
@@ -127,8 +152,15 @@
                             <?php endif; ?>
                             
                             <div class="post-fg">
-                                <h2 class="post-title"><?php echo the_title(); ?></h2>
-                                <?php echo the_terms( $post->ID, 'project_type', '', '', '' ); ?>
+                                <div class="post-fg-head">
+                                    <h2 class="post-title"><?php echo the_title(); ?></h2>
+                                    <div class="post-term">
+                                        <?php echo the_terms( $post->ID, 'project_type', '', '', '' ); ?>
+                                    </div>
+                                </div>
+                                <div class="post-fg-body">
+                                    <?php get_field( 'project_head_excerpt', $post->ID ); ?>
+                                </div>
                             </div>
                         </div>
                     </div>
