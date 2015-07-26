@@ -111,8 +111,27 @@
 
                 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-                <div class="pt-loop-outer" style="display: none;" >
-                    <?php echo the_title(); ?>
+                <div class="pt-loop" style="display: none;" >
+
+                    <div class="post">
+                        <div class="post-inner">
+                            <?php if ( has_post_thumbnail() ) : ?>
+                                <?php
+                                    $_post_img_full = wp_get_attachment_image_src( get_post_thumbnail_id(), full )[0];
+                                    $_post_img_thumb = wp_get_attachment_image_src( get_post_thumbnail_id(), thumbnail )[0];
+                                ?>
+                                <div class="post-bg"
+                                    data-src-landscape="<?php echo $_post_img_full; ?>"
+                                    data-src-portrait="<?php echo $_post_img_thumb; ?>"
+                                ></div>
+                            <?php endif; ?>
+                            
+                            <div class="post-fg">
+                                <h2 class="post-title"><?php echo the_title(); ?></h2>
+                                <?php echo the_terms( $post->ID, 'project_type', '', '', '' ); ?>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <?php endwhile; ?>
 
