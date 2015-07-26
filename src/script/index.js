@@ -19,6 +19,7 @@ var Signature = require('./signature')
 ,   Nav = require('./nav')
 ,   Logo = require('./logo')
 ,   Project = require('./project')
+,   ProjectType = require('./project-type')
 ;
 
 (function( $ ) {
@@ -39,6 +40,9 @@ var Signature = require('./signature')
         // Project
         Project.single.initCover();
         Project.single.initMeta();
+
+        // Project-Type
+        ProjectType.header.initBackground();
 
     });
 

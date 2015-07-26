@@ -1,22 +1,10 @@
 <?php
 /**
  * @package rdt-rnr15
- * @subpackage rnr_project
+ * @subpackage plugin/rnr_project
  * @version 0.0.0
  * @since 0.0.0
  */
-
-?>
-
-<?php
-// get_header();
-// if(have_posts()) : while(have_posts()) : the_post();
-//     the_title();
-//     echo '<div class="entry-content">';
-//     the_content();
-//     echo '</div>';
-// endwhile; endif;
-// get_footer();
 ?>
 
 <?php get_header(); ?>

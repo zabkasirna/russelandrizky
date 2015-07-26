@@ -50,6 +50,9 @@ $old: false;
 @import "object/project/description";
 @import "object/project/meta";
 
+/* ------ {{ project-type object }} ------ */
+@import "object/project-type/header";
+
 /* ------ {{ debugger }} ------ */
 @import "object/debugger/debugger";
 
