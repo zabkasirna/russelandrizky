@@ -24,15 +24,15 @@ function initBackground() {
             }
         });
 
-        // $(this).find('.ptbgi').on('loaded.background', function(e) {
-        //     _pciCounter ++;
+        $(this).find('.ptbgi').on('loaded.background', function(e) {
+            _bgiCounter ++;
 
-        //     if ( _pciCounter === $bgi.length ) {
-        //         // console.log( 'finish loading cover\'s assets' );
-        //         $('#preloader').addClass('has-loaded');
-        //     }
+            if ( _bgiCounter === $bgi.length ) {
+                // console.log( 'finish loading cover\'s assets' );
+                $('#preloader').addClass('has-loaded');
+            }
 
-        // });
+        });
     });
 
     if ( $bgi.length > 1 ) {

@@ -368,7 +368,6 @@
             <?php else : ?>
         
                 <p>no project found</p>
-        
             <?php endif; ?>
             </main>
         </div>
