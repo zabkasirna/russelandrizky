@@ -111,7 +111,7 @@
 
                 <?php if ( have_posts() ) : ?>
 
-                <div class="pt-loop" style="display: none;" >
+                <div class="post-loop" >
 
                     <?php while ( have_posts() ) : the_post(); ?>
 
@@ -145,22 +145,30 @@
                                     $_post_img_full = wp_get_attachment_image_src( get_post_thumbnail_id(), full )[0];
                                     $_post_img_thumb = wp_get_attachment_image_src( get_post_thumbnail_id(), thumbnail )[0];
                                 ?>
-                                <div class="post-bg"
-                                    data-src-landscape="<?php echo $_post_img_full; ?>"
-                                    data-src-portrait="<?php echo $_post_img_thumb; ?>"
-                                ></div>
+                            <a href="#" class="post-bg"
+                                data-src-landscape="<?php echo $_post_img_full; ?>"
+                                data-src-portrait="<?php echo $_post_img_thumb; ?>"
+                            ></a>
                             <?php endif; ?>
                             
                             <div class="post-fg">
                                 <div class="post-fg-head">
-                                    <h2 class="post-title"><?php echo the_title(); ?></h2>
-                                    <div class="post-term">
-                                        <?php echo the_terms( $post->ID, 'project_type', '', '', '' ); ?>
+                                    <div class="post-fg-head-inner">
+                                        <h3 class="post-title"><a href="#">_<?php echo the_title(); ?></a></h3>
+                                        <div class="post-term">
+                                            <?php echo the_terms( $post->ID, 'project_type', '', '', '' ); ?>
+                                        </div>
                                     </div>
                                 </div>
+                                <?php
+                                    if ( get_field( 'project_head_excerpt', $post->ID ) ) :
+                                    
+                                    $_project_head_excerpt = get_field( 'project_head_excerpt', $post->ID );
+                                ?>
                                 <div class="post-fg-body">
-                                    <?php get_field( 'project_head_excerpt', $post->ID ); ?>
+                                    <?php echo $_project_head_excerpt; ?>
                                 </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

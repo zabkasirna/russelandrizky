@@ -40,6 +40,7 @@ var Signature = require('./signature')
         // Project
         Project.single.initCover();
         Project.single.initMeta();
+        Project.archive.initBackground();
 
         // Project-Type
         ProjectType.header.initBackground();
