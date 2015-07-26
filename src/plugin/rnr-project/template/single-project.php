@@ -161,20 +161,19 @@
 
                                 <?php
 
-                                $pcs_layout_css = "project-cover-lists ";
+                                    $pcs_layout_css = "project-cover-lists ";
 
-                                if ( $pcs['layout'] === 'is_full' ) $pcs_layout_css .= 'full';
+                                    if ( $pcs['layout'] === 'is_full' ) $pcs_layout_css .= 'full';
 
-                                else {
-                                    if ( $project_header[ 'layout' ] === 'right' ) $pcs_layout_css .= 'half left';
-                                    else $pcs_layout_css .= 'half right';
-                                }
+                                    else {
+                                        if ( $project_header[ 'layout' ] === 'right' ) $pcs_layout_css .= 'half left';
+                                        else $pcs_layout_css .= 'half right';
+                                    }
 
-                                $pcs_srcs = array(
-                                    'landscape' => isset( $pcs['src_landscape'] ) ? $pcs['src_landscape'] : "",
-                                    'portrait'  => isset( $pcs['src_portrait'] ) ? $pcs['src_portrait'] : ""
-                                );
-
+                                    $pcs_srcs = array(
+                                        'landscape' => isset( $pcs['src_landscape'] ) ? $pcs['src_landscape'] : "",
+                                        'portrait'  => isset( $pcs['src_portrait'] ) ? $pcs['src_portrait'] : ""
+                                    );
                                 ?>
 
                                 <li class="<?php echo $pcs_layout_css; ?>">

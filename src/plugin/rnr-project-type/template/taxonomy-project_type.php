@@ -27,25 +27,125 @@
             <?php
 
                 /**------------------------------------------------------**\
-                 * DATA: TAXONOMY META
+                 * DATA: TAXONOMY META & ACF
                  **------------------------------------------------------**/
 
                 $_queried_object = get_queried_object();
                 $_taxonomy = $_queried_object->taxonomy;
                 $_term_id = $_queried_object->term_id;
-                $_ptm_bgi = get_field('project_type_meta_bgi', $_taxonomy . '_' . $_term_id );
-                $_ptm_bgi_url = $_ptm_bgi['url'];
-                debuggrr( $_queried_object );
-                // debuggrr( $_taxonomy );
-                // debuggrr( $_term_id );
-                // debuggrr( $_ptm_bgi['url'] );
-                // debuggrr( $_ptm_bgi_url );
+                // debuggrr( $_queried_object );
+                
+                /**------------------------------------------------------**\
+                 * DATA: PROJECT TYPE HEADER
+                 **------------------------------------------------------**/
+
+                $pt_header = array(
+                    'layout'      => get_field( 'project_type_head_layout' ),
+                    'title_color' => get_field( 'project_type_head_title_color' ),
+                    'desc_color'  => get_field( 'project_type_head_desc_color' )
+                );
+
+                // debuggrr( $project_header );
+                
+                /**------------------------------------------------------**\
+                 * DATA: PROJECT TYPE BACKGROUND
+                 **------------------------------------------------------**/
+
+                $ptbgs = array();
+
+                if ( get_field( 'ptbg_settings', $_taxonomy . '_' . $_term_id ) ) :
+                    foreach( get_field( 'ptbg_settings', $_taxonomy . '_' . $_term_id ) as $ptbg ) :
+                        $ptbgs[] = array(
+                            'src_landscape'=> $ptbg['ptbg_source_landscape']['url'],
+                            'src_portrait' =>
+                                $ptbg['ptbg_is_responsive'] ?
+                                    $ptbg['ptbg_source_portrait']['url'] :
+                                    $ptbg['ptbg_source_landscape']['sizes']['thumbnail']
+                                ,
+                            'layout'=>$ptbg['ptbg_layout']
+                        );
+
+                endforeach; endif;
+
+                // debuggrr( get_field( 'ptbg_settings', $_taxonomy . '_' . $_term_id ) );
+                debuggrr( $ptbgs );
             ?>
 
             <header class="project-type-header" style="display: none;" >
-                <div class="pt-header-bg"
-                    data-src="<?php echo $_ptm_bgi_url; ?>"
-                ></div>
+                <!-- The Masks -->
+                <svg height="0" id="cover_mask_svg">
+                    <mask id="cover_mask_fade_left"
+                        maskUnits="objectBoundingBox"
+                        maskContentUnits="objectBoundingBox">
+
+                        <linearGradient id="cover_mask_fade_left_grad"
+                                        gradientUnits="objectBoundingBox"
+                                        x2="1" y2="0">
+
+                            <stop stop-color="black" stop-opacity="0" offset="0"></stop>
+                            <stop stop-color="black" stop-opacity="1" offset="0.5"></stop>
+                        </linearGradient>
+
+                        <rect x="0" y="0"
+                              width="1" height="1"
+                              fill="url(#cover_mask_fade_left_grad)"
+                        ></rect>
+                    </mask>
+
+                    <mask id="cover_mask_fade_right"
+                        maskUnits="objectBoundingBox"
+                        maskContentUnits="objectBoundingBox">
+
+                        <linearGradient id="pcm_fade_right_grad"
+                                        gradientUnits="objectBoundingBox"
+                                        x2="1" y2="0">
+
+                          <stop stop-color="black" stop-opacity="0" offset="0.5"></stop>
+                          <stop stop-color="black" stop-opacity="1" offset="1"></stop>
+                        </linearGradient>
+
+                        <rect x="0" y="0"
+                              width="1" height="1"
+                              fill="url(#cover_mask_fade_right_grad)"
+                        ></rect>
+                    </mask>
+                </svg>
+
+                <ul class="pt-header-bg" style="display: none;" >
+
+                    <?php foreach( $ptbgs as $ptbg ) : ?>
+
+                    <?php
+
+                        $ptbg_layout_css = "ptbg-lists ";
+
+                        if ( $ptbg['layout'] === 'is_full' ) $ptbg_layout_css .= 'full';
+
+                        else {
+                            if ( $pt_header[ 'layout' ] === 'right' ) $ptbg_layout_css .= 'half left';
+                            else $ptbg_layout_css .= 'half right';
+                        }
+
+                        $ptbg_srcs = array(
+                            'landscape' => isset( $ptbg['src_landscape'] ) ? $ptbg['src_landscape'] : "",
+                            'portrait'  => isset( $ptbg['src_portrait'] ) ? $ptbg['src_portrait'] : ""
+                        );
+                    ?>
+
+                    <li class="<?php echo $ptbg_layout_css; ?>">
+                        
+                        <div class="ptbgi-outer">
+                            <div class="ptbgi"
+                                data-src-landscape="<?php echo $ptbg_srcs['landscape']; ?>"
+                                data-src-portrait="<?php echo $ptbg_srcs['portrait']; ?>"
+                            ></div>
+                        </div>
+
+                    </li>
+
+                    <?php endforeach; ?>
+                </ul>
+
                 <div class="pt-header-fg">
                     <h1 class="pt-title"><?php echo $_queried_object->name; ?></h1>
                     <?php if ( $_queried_object->description !== '' ) : ?>
