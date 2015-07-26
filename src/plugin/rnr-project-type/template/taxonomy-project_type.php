@@ -33,6 +33,7 @@
                 $_queried_object = get_queried_object();
                 $_taxonomy = $_queried_object->taxonomy;
                 $_term_id = $_queried_object->term_id;
+                $_term = $_taxonomy . '_' . $_term_id;
                 // debuggrr( $_queried_object );
                 
                 /**------------------------------------------------------**\
@@ -40,12 +41,12 @@
                  **------------------------------------------------------**/
 
                 $pt_header = array(
-                    'layout'      => get_field( 'project_type_head_layout' ),
-                    'title_color' => get_field( 'project_type_head_title_color' ),
-                    'desc_color'  => get_field( 'project_type_head_desc_color' )
+                    'layout'      => get_field( 'project_type_head_layout', $_term ),
+                    'title_color' => get_field( 'project_type_head_title_color', $_term ),
+                    'desc_color'  => get_field( 'project_type_head_desc_color', $_term )
                 );
 
-                // debuggrr( $project_header );
+                // debuggrr( $pt_header );
                 
                 /**------------------------------------------------------**\
                  * DATA: PROJECT TYPE BACKGROUND
@@ -53,8 +54,8 @@
 
                 $ptbgs = array();
 
-                if ( get_field( 'ptbg_settings', $_taxonomy . '_' . $_term_id ) ) :
-                    foreach( get_field( 'ptbg_settings', $_taxonomy . '_' . $_term_id ) as $ptbg ) :
+                if ( get_field( 'ptbg_settings', $_term ) ) :
+                    foreach( get_field( 'ptbg_settings', $_term ) as $ptbg ) :
                         $ptbgs[] = array(
                             'src_landscape'=> $ptbg['ptbg_source_landscape']['url'],
                             'src_portrait' =>
@@ -67,7 +68,7 @@
 
                 endforeach; endif;
 
-                // debuggrr( get_field( 'ptbg_settings', $_taxonomy . '_' . $_term_id ) );
+                // debuggrr( get_field( 'ptbg_settings', $_term ) );
                 // debuggrr( $ptbgs );
             ?>
 
@@ -142,13 +143,19 @@
                     <?php endforeach; ?>
                 </div>
 
-                <div class="pt-header-fg">
-                    <h1 class="pt-title"><?php echo $_queried_object->name; ?></h1>
-                    <?php if ( $_queried_object->description !== '' ) : ?>
-                    <div class="pt-excerpt-outer">
-                        <p class="pt-excerpt"><?php echo $_queried_object->description; ?></p>
+                <div class="pt-header-fg <?php echo $pt_header['layout']; ?>">
+                    <div class="ptfg-outer">
+                        <h1 class="pt-title"
+                            style="color: <?php echo $pt_header['title_color']; ?>;"
+                        ><?php echo $_queried_object->name; ?></h1>
+                        <?php if ( $_queried_object->description !== '' ) : ?>
+                        <div class="pt-desc-outer"
+                            style="color: <?php echo $pt_header['desc_color']; ?>;"
+                        >
+                            <p class="pt-desc"><?php echo $_queried_object->description; ?></p>
+                        </div>
+                        <?php endif; ?>
                     </div>
-                    <?php endif; ?>
                 </div>
             </header>
 

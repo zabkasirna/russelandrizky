@@ -9,7 +9,7 @@ function initCover() {
 
     var $coverOuter = $('.project-cover-outer')
     ,   $pci = $coverOuter.find('.pci')
-    ,   _pciCounter = 0;
+    ,   _pciCounter = 0
     ;
 
 
@@ -38,7 +38,7 @@ function initCover() {
 
     if ( $pci.length > 1 ) {
 
-        flexsliderOptions = {
+        var flexsliderOptions = {
             animation: "slide",
             controlNav: true,
             directionNav: false,

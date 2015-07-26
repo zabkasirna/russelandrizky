@@ -38,7 +38,7 @@ function initBackground() {
     if ( $bgi.length > 1 ) {
         $bgOuter.carousel({
             autoAdvance: true,
-            autoTime: 2000,
+            autoTime: 4000,
             controls: false,
             infinite: true
         });
