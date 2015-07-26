@@ -41,7 +41,12 @@
       "main": "modernizr.js"
     },
     "waypoints": {
-      "main": "lib/jquery.waypoints.js"
+      "main": [
+        "lib/jquery.waypoints.js",
+        "lib/shortcuts/infinite.js",
+        "lib/shortcuts/inview.js",
+        "lib/shortcuts/sticky.js"
+      ]
     },
     "compass-mixins": {
       "ignore": true

@@ -9,11 +9,21 @@ function initBackground() {
 
     $posts.each( function( i ) {
 
-        var $bgi = $(this).find('.post-bg')
+        var $self = $(this)
+        ,   $bgi = $self.find('.post-bg')
 
         var srcLandscape = $bgi.data('src-landscape') || ''
         ,   srcPortrait = $bgi.data('src-portrait') || ''
         ;
+
+        console.log( Waypoint.Inview );
+
+        // var waypointView = new Waypoint.Inview({
+        //     element: $self[0],
+        //     entered: function( dir ) {
+        //         console.log( dir, $self );
+        //     }
+        // });
 
         $bgi.background({
             "source": {

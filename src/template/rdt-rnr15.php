@@ -65,6 +65,7 @@ function rr_scripts_and_styles() {
 
         // waypoints
         wp_register_script( 'rr-waypoints', get_template_directory_uri() . '/script/vendor/waypoints/lib/jquery.waypoints.js', array( 'rr-jquery' ), '', true );
+        wp_register_script( 'rr-waypoints-inview', get_template_directory_uri() . '/script/vendor/waypoints/lib/shortcuts/inview.js', array( 'rr-jquery', 'rr-waypoints' ), '', true );
 
         // jquery transit
         wp_register_script( 'rr-transit', get_template_directory_uri() . '/script/vendor/jquery.transit/jquery.transit.js', array( 'rr-jquery' ), '', true );
@@ -88,6 +89,7 @@ function rr_scripts_and_styles() {
         wp_enqueue_script( 'rr-jquery' );
         wp_enqueue_script( 'rr-svg-injector' );
         wp_enqueue_script( 'rr-waypoints' );
+        wp_enqueue_script( 'rr-waypoints-inview' );
         wp_enqueue_script( 'rr-transit' );
         wp_enqueue_script( 'rr-flexslider' );
         wp_enqueue_script( 'rr-formstone-core' );
