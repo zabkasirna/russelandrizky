@@ -1,0 +1,228 @@
+#nav-lists {
+
+    @include clearfix;
+
+    margin: 0;
+    padding: 0;
+    list-style: none outside none;
+
+    display: block;
+    // overflow-x: hidden;
+
+    height: 100%;
+
+    & > li {
+
+        float: left;
+        font-size: 11px;
+        height: x(3);
+        margin: 0 0 0 0;
+        color: inherit;
+        position: relative;
+        // overflow: hidden;
+
+        // ------ {{ list style type }} ------ //
+
+        // http://www.w3schools.com/cssref/playit.asp?filename=playcss_ol_list-style-type&preval=decimal-leading-zero
+        // http://stackoverflow.com/questions/5945161/html-css-ordered-list-without-the-period
+        // https://developer.mozilla.org/en-US/docs/Web/CSS/counter-increment
+
+        counter-increment: rnr-counter;
+
+        &:before {
+            content: counter( rnr-counter, decimal-leading-zero ) " ";
+
+            font-size: 11px;
+            line-height: x(1);
+            height: x(1);
+
+            position: absolute;
+            top: r(0.75);
+            left: 1.5em;
+        }
+
+
+        // ------ {{ border }} ------ //
+
+        border-top: 1px solid currentColor;
+        border-bottom: 1px solid currentColor;
+
+        & > .fauxborder {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 0;
+            height: x(1.5);
+            width: 100%;
+            border-top: 1px solid currentColor;
+            border-right: 1px solid currentColor;
+            pointer-events: none;
+        }
+        &:last-of-type {
+
+            border-right: 1px solid currentColor;
+
+            & > a { border-right-width: 0; }
+
+            & > .fauxborder {
+                border-right: none;
+            }
+        }
+
+
+        // ------ {{ anchor }} ------ //
+
+        & > a {
+            transition: color .3s ease-out .15s;
+
+            display: block;
+
+            color: inherit;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            text-transform: uppercase;
+
+            height: x(1.5);
+            line-height: x(1.5);
+
+            margin: -1px 0 0 0;
+            padding: 0 3em 0 1.5em;
+
+            border: none;
+            border-right: 1px solid currentColor;
+
+            position: relative;
+            top: x(1.5);
+
+            z-index: 10;
+            overflow: hidden;
+
+            .fauxbg {
+                transition: top .3s ease-out;
+
+                content: "";
+                position: absolute;
+                top: -100%;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: $black;
+                pointer-events: none;
+
+                z-index: -10;
+            }
+        }
+
+        &.active,
+        &.current-menu-parent,
+        &.current-menu-ancestor,
+        &:hover {
+            & > a {
+                transition: background-color .15s ease-out;
+                color: currentColor;
+                background-color: currentColor;
+
+                .fauxbg {
+                    transition: top .3s ease-out;
+                    top: -1px;
+                }
+            }
+        }
+    }
+
+    // ------ {{ on load }} ------ //
+    
+    & > li {
+        transition: max-width 1s ease-out;
+        max-width: 100%;
+        opacity: 1;
+    }
+
+    .is-preload #header-nav & {
+
+        & > li {
+            transition: max-width 1s ease-out;
+            max-width: 0%;
+            opacity: 0;
+        }
+    }
+}
+
+#nav-lists > .menu-item > .sub-menu {
+    list-style: none outside none;
+    padding: 0;
+    margin: -1px 0 0 0;
+    position: absolute;
+    top: x(3);
+    left: -1px;
+    right: -1px;
+    overflow: hidden;
+    border-left: 1px solid currentColor;
+    border-right: 1px solid currentColor;
+
+    & > .menu-item {
+        transition: height .2s ease-out;
+
+        font-size: 11px;
+        line-height: x(1.5);
+        max-height: x(1.5);
+        height: 0;
+        overflow: hidden;
+        margin: 0 0 0 0;
+        color: currentColor;
+        position: relative;
+
+        & > a {
+            display: block;
+            line-height: inherit;
+            max-height: x(1.5);
+            height: x(1.5);
+            overflow: hidden;
+
+            color: currentColor;
+            text-transform: uppercase;
+            padding: 0 5em 0 1.5em;
+
+            & > .fauxbg {
+                transition: top 0.3s ease-out;
+                content: "";
+                position: absolute;
+                top: -100%;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #000;
+                pointer-events: none;
+                // z-index: -10;
+            }
+        }
+        
+        &.active,
+        &:hover {
+            & > a {
+                color: currentColor;
+
+                & > .fauxbg {
+                    top: 0;
+                    cursor: pointer;
+                    z-index: -1;
+                }
+            }
+        }
+
+        .fauxborder {
+            position: absolute;
+            bottom: 0;
+            height: 1px;
+            width: 100%;
+            background-color: currentColor;
+        }
+    }
+}
+
+#nav-lists > .menu-item-has-children:hover > .sub-menu {
+    & > .menu-item {
+        transition: height .2s ease-out;
+        height: x(1.5);
+    }
+}
