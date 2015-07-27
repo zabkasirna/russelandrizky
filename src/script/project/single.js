@@ -1,6 +1,7 @@
 var SingleProject = {
     initCover: initCover,
-    initMeta: initMeta
+    initMeta: initMeta,
+    setActiveMainNav: setActiveMainNav
 };
 
 function initCover() {
@@ -28,13 +29,43 @@ function initCover() {
         $(this).on('loaded.background', function(e) {
             _pciCounter ++;
 
-            if ( _pciCounter === $pci.length ) {
+            if (
+                _pciCounter === $pci.length &&
+                !$('#preloader').hasClass('has-loaded')
+            ) {
                 // console.log( 'finish loading cover\'s assets' );
                 $('#preloader').addClass('has-loaded');
+                bgiRecheckStop();
             }
 
         });
     });
+    
+    var bgiRecheckId;
+
+    function bgiRecheck() {
+        var $imagesToValidate = $pci.parent().find('img');
+        if (
+            $imagesToValidate.length === $pci.length ||
+            !$('#preloader').hasClass('has-loaded') ) {
+
+                $('#preloader').addClass('has-loaded');
+                bgiRecheckStop();
+        }
+    }
+
+    function bgiRecheckStop() {
+        clearInterval( bgiRecheckId );
+        bgiRecheckId = null;
+    }
+
+    function bgiRecheckStart() {
+        if ( bgiRecheckId ) return;
+        bgiRecheckId = setInterval( bgiRecheck, 2000 );
+        bgiRecheck();
+    }
+
+    bgiRecheckStart();
 
     if ( $pci.length > 1 ) {
 
@@ -95,6 +126,16 @@ function metaSetN() {
         .appendTo( $target )
         ;
     ;
+}
+
+function setActiveMainNav() {
+    if ( !$('body').hasClass('single-project') ||
+         !$('.project-link').length
+    ) return;
+
+    var $el = $('#header-nav .menu-item.project-link');
+
+    $el.addClass('active');
 }
 
 module.exports = SingleProject;

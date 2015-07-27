@@ -145,7 +145,8 @@
                                     $_post_img_full = wp_get_attachment_image_src( get_post_thumbnail_id(), full )[0];
                                     $_post_img_thumb = wp_get_attachment_image_src( get_post_thumbnail_id(), thumbnail )[0];
                                 ?>
-                            <a href="#" class="post-bg"
+                            <a class="post-bg"
+                                href="<?php echo get_permalink(); ?>"
                                 data-src-landscape="<?php echo $_post_img_full; ?>"
                                 data-src-portrait="<?php echo $_post_img_thumb; ?>"
                             ></a>
@@ -154,7 +155,7 @@
                             <div class="post-fg">
                                 <div class="post-fg-head">
                                     <div class="post-fg-head-inner">
-                                        <h2 class="post-title"><a href="#">_<?php echo the_title(); ?></a></h2>
+                                        <h2 class="post-title"><a href="<?php echo get_permalink(); ?>">_<?php echo the_title(); ?></a></h2>
                                         <div class="post-term">
                                             <?php echo the_terms( $post->ID, 'project_type', '', '', '' ); ?>
                                         </div>
