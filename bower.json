@@ -34,7 +34,8 @@
     "jquery.appear": "*",
     "FlexSlider": "~2.5.0",
     "formstone": "~0.6.14",
-    "svg-injector": "~1.1.3"
+    "svg-injector": "~1.1.3",
+    "verge": "git@github.com:ryanve/verge.git#~1.9.1"
   },
   "overrides": {
     "modernizr": {
@@ -47,6 +48,9 @@
         "lib/shortcuts/inview.js",
         "lib/shortcuts/sticky.js"
       ]
+    },
+    "verge": {
+      "main": "verge.js"
     },
     "compass-mixins": {
       "ignore": true
