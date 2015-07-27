@@ -296,26 +296,26 @@
                                 // debuggrr( $__inline_style );
                             ?>
 
-                            <div class="pd-section" style="<?php echo $__inline_style; ?>">
+                            <div class="pd-section <?php echo $pd_section_val['desc_layout']; ?>" style="<?php echo $__inline_style; ?>">
 
                                 <?php foreach ( $pd_section_val['desc_copy'] as $pd_copy_key => $pd_copy_val ) : ?>
                                     <?php switch( $pd_copy_val['acf_fc_layout'] ) : case 'desc_copy_yell' : ?>
 
-                                        <?php $__css_classes = 'pd-copy yell ' . $pd_copy_val['desc_copy_yell_layout'] ?>
+                                        <?php $__css_classes = 'pd-copy yell' ?>
                                         <?php if ( isset($pd_copy_val[ 'desc_copy_yell_color' ]) ) $__inline_style = "color: " . $pd_copy_val[ 'desc_copy_yell_color' ] . "; "; ?>
                                         <p class="<?php echo $__css_classes; ?>" style="<?php echo $__inline_style; ?>"
                                         ><?php echo $pd_copy_val['desc_copy_yell_text']; ?></p>
 
                                     <?php break; case 'desc_copy_shout' : ?>
 
-                                        <?php $__css_classes = 'pd-copy shout ' . $pd_copy_val['desc_copy_shout_layout'] ?>
+                                        <?php $__css_classes = 'pd-copy shout' ?>
                                         <?php if ( isset($pd_copy_val[ 'desc_copy_shout_color' ]) ) $__inline_style = "color: " . $pd_copy_val[ 'desc_copy_shout_color' ] . "; "; ?>
                                         <p class="<?php echo $__css_classes; ?>" style="<?php echo $__inline_style; ?>"
                                         ><?php echo $pd_copy_val['desc_copy_shout_text']; ?></p>
 
                                     <?php break; case 'desc_copy_speak' : ?>
 
-                                        <?php $__css_classes = 'pd-copy speak ' . $pd_copy_val['desc_copy_speak_layout'] ?>
+                                        <?php $__css_classes = 'pd-copy speak' ?>
                                         <?php if ( isset($pd_copy_val[ 'desc_copy_speak_color' ]) ) $__inline_style = "color: " . $pd_copy_val[ 'desc_copy_speak_color' ] . "; "; ?>
                                         <p class="<?php echo $__css_classes; ?>" style="<?php echo $__inline_style; ?>"
                                         ><?php echo $pd_copy_val['desc_copy_speak_text']; ?></p>
@@ -335,7 +335,7 @@
                      **------------------------------------------------------**/
                     ?>
 
-                    <?php if ( isset( $project_meta ) ) : ?>
+                    <?php if ( isset( $project_meta ) && get_field( 'project_has_meta' ) ) : ?>
 
                     <div class="project-meta">
                         <ol class="project-meta-list">
