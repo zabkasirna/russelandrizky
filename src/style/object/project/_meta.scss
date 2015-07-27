@@ -16,6 +16,16 @@
         }
     }
 
+    .is_right &.is-wide {
+        left: 0; right: auto;
+        .project-meta-list { float: right; }
+    }
+
+    .is_left &.is-wide {
+        left: auto; right: 0;
+        .project-meta-list { float: left; }
+    }
+
     .project-meta-list {
 
         list-style: none outside none;
