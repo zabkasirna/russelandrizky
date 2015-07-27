@@ -20,7 +20,7 @@ function initBackground() {
 
         var waypointView = new Waypoint.Inview({
             element: $self[0],
-            entered: function( dir ) {
+            enter: function( dir ) {
                 // console.log( dir, $self );
 
                 setTimeout( function() {
@@ -37,7 +37,7 @@ function initBackground() {
                         .animate({
                             top: 0
                         }, 500 );
-                }, 100 );
+                }, 500 );
 
                 this.destroy();
             }

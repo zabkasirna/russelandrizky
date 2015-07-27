@@ -1,3 +1,7 @@
+var Img = require( '../util' ).img
+,   Preloader = require( '../util' ).preloader
+;
+
 var SingleProject = {
     initCover: initCover,
     initMeta: initMeta,
@@ -11,31 +15,31 @@ function initCover() {
     var $coverOuter = $('.project-cover-outer')
     ,   $pci = $coverOuter.find('.pci')
     ,   _pciCounter = 0
+    ,   _pccCounter = 0
     ;
 
-
     $pci.each( function( i ) {
-        var srcLandscape = $(this).data('src-landscape') || ''
+        var $self = $(this)
+        ,   srcLandscape = $(this).data('src-landscape') || ''
         ,   srcPortrait = $(this).data('src-portrait') || ''
         ;
 
-        $(this).background({
+        $self.background({
             "source": {
                 "0px": srcPortrait,
                 "980px": srcLandscape
             }
         });
 
-        $(this).on('loaded.background', function(e) {
-            _pciCounter ++;
+        // ON IMAGE CACHE
+        var _testImg = $self.find('img')[0];
+        if ( Img.cached( _testImg.src ) ) _pccCounter ++;
+        if ( _pccCounter >= $pci.length ) Preloader.remove();
 
-            if (
-                _pciCounter === $pci.length &&
-                !$('#preloader').hasClass('has-loaded')
-            ) {
-                // console.log( 'finish loading cover\'s assets' );
-                $('#preloader').addClass('has-loaded');
-            }
+        // ON LOADED ALL IMAGES
+        $self.on('loaded.background', function(e) {
+            _pciCounter ++;
+            if ( _pciCounter >= $pci.length ) Preloader.remove();
         });
     });
 
@@ -53,6 +57,7 @@ function initCover() {
 }
 
 function initMeta() {
+    if ( !$('.project-meta').length || !$('.pd-section').length ) return;
     if ( document.documentElement.clientWidth > 1200 ) metaSetW();
 
     var resizeTimer;
@@ -62,42 +67,39 @@ function initMeta() {
         enter: function() { metaSetN(); },
         leave: function() { metaSetW(); }
     });
-}
 
-function metaSetW() {
+    function metaSetW() {
 
-    if ( !$('.project-meta').length || !$('.pd-section').length ) return;
+        if ( !$('.project-meta').length || !$('.pd-section').length ) return;
 
-    var $meta = $('.project-meta')
-    ,   $target = $('.pd-section').first()
-    ,   _h = $meta.height()
-    ;
-
-    $meta
-        .prependTo( $target )
-        .addClass('is-wide')
-        .parent()
-            .css( 'height', ( _h + 48 ) + 'px' )
-    ;
-}
-
-function metaSetN() {
-
-    if ( !$('.project-meta').length || !$('.project-outer').length ) return;
-
-    var $meta = $('.project-meta')
-    ,   $target = $('.project-outer')
-    ,   _h = $meta.height()
-    ;
-
-    $meta
-        .parent()
-            .css( 'height', 'auto' )
-            .end()
-        .removeClass('is-wide')
-        .appendTo( $target )
+        var $meta = $('.project-meta')
+        ,   $target = $('.pd-section').first()
         ;
-    ;
+
+        $meta
+            .prependTo( $target )
+            .addClass('is-wide')
+        ;
+    }
+
+    function metaSetN() {
+
+        if ( !$('.project-meta').length || !$('.project-outer').length ) return;
+
+        var $meta = $('.project-meta')
+        ,   $target = $('.project-outer')
+        ,   _h = $meta.height()
+        ;
+
+        $meta
+            .parent()
+                .css( 'height', 'auto' )
+                .end()
+            .removeClass('is-wide')
+            .appendTo( $target )
+            ;
+        ;
+    }
 }
 
 function setActiveMainNav() {

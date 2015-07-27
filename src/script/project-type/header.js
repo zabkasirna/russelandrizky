@@ -1,3 +1,7 @@
+var Img = require( '../util' ).img
+,   Preloader = require( '../util' ).preloader
+;
+
 var ProjectTypeHeader = {
     initBackground: initBackground
 };
@@ -9,6 +13,7 @@ function initBackground() {
     var $bgOuter = $('.pt-header-bg')
     ,   $bgi = $bgOuter.find('.ptbg-lists')
     ,   _bgiCounter = 0
+    ,   _bgcCounter = 0
     ;
 
     $bgi.each( function( i ) {
@@ -24,44 +29,17 @@ function initBackground() {
             }
         });
 
+        // ON IMAGE CACHE
+        var _testImg = $el.find('img')[0];
+        if ( Img.cached( _testImg.src ) ) _bgcCounter ++;
+        if ( _bgcCounter >= $bgi.length ) Preloader.remove();
+
+        // ON LOADED ALL IMAGES
         $el.on('loaded.background', function(e) {
             _bgiCounter ++;
-
-            if ( _bgiCounter === $bgi.length ) {
-                // console.log( 'finish loading cover\'s assets' );
-                $('#preloader').addClass('has-loaded');
-                // bgiRecheckStop();
-            }
-
+            if ( _bgiCounter === $bgi.length ) Preloader.remove();
         });
     });
-
-    var bgiRecheckId;
-
-    function bgiRecheck() {
-        var $imagesToValidate = $bgi.parent().find('img');
-        if (
-            $imagesToValidate.length === $bgi.length ||
-            !$('#preloader').hasClass('has-loaded') ) {
-
-                $('#preloader').addClass('has-loaded');
-                bgiRecheckStop();
-        }
-    }
-
-    function bgiRecheckStop() {
-        clearInterval( bgiRecheckId );
-        bgiRecheckId = null;
-    }
-
-    function bgiRecheckStart() {
-        // console.log('s');
-        if ( bgiRecheckId ) return;
-        bgiRecheckId = setInterval( bgiRecheck, 5000 );
-        bgiRecheck();
-    }
-
-    // bgiRecheckStart();
 
     if ( $bgi.length > 1 ) {
         $bgOuter.carousel({

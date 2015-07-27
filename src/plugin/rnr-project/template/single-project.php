@@ -40,6 +40,7 @@
 
                     if ( get_field( 'project_cover_settings' ) ) :
                         foreach( get_field( 'project_cover_settings' ) as $pcs ) :
+
                             $project_cover_settings[] = array(
                                 'src_landscape'=> $pcs['pci_source_landscape']['url'],
                                 'src_portrait' =>
@@ -204,11 +205,10 @@
 
                     <?php if ( isset( $project_desc_section ) ) : ?>
 
-                    <div class="project-desc" >
+                    <div class="project-desc">
 
                         <?php foreach ( $project_desc_section as $pd_section_key => $pd_section_val ) : ?>
                             
-
                             <?php
 
                                 // inline style to be printed

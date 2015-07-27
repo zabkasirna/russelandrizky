@@ -45,6 +45,7 @@
 
                     if ( get_field( 'ptbg_settings', $_term ) ) :
                         foreach( get_field( 'ptbg_settings', $_term ) as $ptbg ) :
+
                             $ptbgs[] = array(
                                 'src_landscape'=> $ptbg['ptbg_source_landscape']['url'],
                                 'src_portrait' =>
@@ -179,8 +180,8 @@
                             </div>
                         </div>
                     </div>
+                    <?php endwhile; ?>
                 </div>
-                <?php endwhile; ?>
 
                 <?php else : ?>
             
