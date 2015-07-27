@@ -30,7 +30,7 @@ function initBackground() {
                             "980px": srcLandscape
                         }
                     });
-                }, 1000 );
+                }, 1500 );
 
                 setTimeout( function() {
                     $self.find('.post-fg')
