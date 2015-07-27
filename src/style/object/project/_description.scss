@@ -1,11 +1,11 @@
 .project-desc {
 
     @media only screen and ( orientation: landscape ) {
-        margin: 100vh 0 0 0;
+        padding: 100vh 0 0 0;
     }
 
     @media only screen and ( orientation: portrait ) {
-        margin: 0;
+        padding: 0;
     }
 
     width: 100%;
