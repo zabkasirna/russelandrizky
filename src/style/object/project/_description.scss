@@ -22,38 +22,38 @@
         margin: 0 0 x(1) 0;
         &:last-child { margin: 0; }
     }
+}
 
-    .pd-copy {
+.pd-copy {
 
-        width: 100%;
-        padding: 0 x(1);
+    width: 100%;
+    padding: 0 x(1);
 
-        @media screen and (min-width: 979px) {
-            &.is_left { padding: 0 50% 0 x(1); }
-            &.is_middle { padding: 0 25%; }
-            &.is_right { padding: 0 x(1) 0 50%; }
-        }
+    @media screen and (min-width: 979px) {
+        .is_left & { padding: 0 50% 0 x(1); }
+        .is_middle & { padding: 0 25%; }
+        .is_right & { padding: 0 x(1) 0 50%; }
+    }
 
-        @media screen and (min-width: 1439px) {
-            &.is_left { padding: 0 50% 0 25%; }
-            &.is_middle { padding: 0 25%; }
-            &.is_right { padding: 0 25% 0 50%; }
-        }
+    @media screen and (min-width: 1439px) {
+        .is_left & { padding: 0 50% 0 25%; }
+        .is_middle & { padding: 0 25%; }
+        .is_right & { padding: 0 25% 0 50%; }
+    }
 
-        &.yell {
-            text-transform: uppercase;
-            font-family: $ff-sans-bold;
-        }
+    &.yell {
+        text-transform: uppercase;
+        font-family: $ff-sans-bold;
+    }
 
-        &.shout {
-            text-transform: uppercase;
-            font-family: $ff-sans-heavy;
-        }
+    &.shout {
+        text-transform: uppercase;
+        font-family: $ff-sans-heavy;
+    }
 
-        &.speak {
-            font-family: $ff-sans-copy;
-            font-size: 12px;
-            letter-spacing: 0.03em;
-        }
+    &.speak {
+        font-family: $ff-sans-copy;
+        font-size: 12px;
+        letter-spacing: 0.03em;
     }
 }
