@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bc9d1d2f5a5d49bd19705190ae10f8c0",
+    "hash": "283e850e0180707c84a5314b80dafe13",
     "packages": [
         {
             "name": "composer/installers",
@@ -301,6 +301,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/add-from-server/"
+        },
+        {
+            "name": "wpackagist-plugin/dependency-minification",
+            "version": "0.9.8",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/dependency-minification/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/dependency-minification.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/dependency-minification/"
         },
         {
             "name": "wpackagist-plugin/wp-optimize",
