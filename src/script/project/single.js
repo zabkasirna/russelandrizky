@@ -58,12 +58,10 @@ function initCover() {
 
 function initMeta() {
     if ( !$('.project-meta').length || !$('.pd-section').length ) return;
-    if ( document.documentElement.clientWidth > 1200 ) metaSetW();
 
-    var resizeTimer;
+    var oldColor;
 
     $.mediaquery("bind", "mq-key", "(max-width: 1119px)", {
-
         enter: function() { metaSetN(); },
         leave: function() { metaSetW(); }
     });
@@ -74,11 +72,36 @@ function initMeta() {
 
         var $meta = $('.project-meta')
         ,   $target = $('.pd-section').first()
+        ,   $targetChildren = $target.find('.pd-copy')
+        ,   _targetChildrenH = 0
+        ,   _newTargetH = $target.height()
         ;
 
+        oldColor = $meta.css('color');
+
+        console.log( oldColor );
+
+        $targetChildren.each( function(){
+            _targetChildrenH += $(this).height();
+        });
+
+        if ( $meta.height() > $target.height() )
+            _targetChildrenH = $meta.height() +
+                (parseInt( $target.css('padding-top'), 10 )) +
+                (parseInt( $target.css('padding-top'), 10 ))
+        ;
+
+        // Move and set parent height
         $meta
             .prependTo( $target )
             .addClass('is-wide')
+                .closest('.pd-section')
+                .css( 'height', _targetChildrenH + 'px' )
+        ;
+
+        // Set color same as to first sibling color
+        $meta.find('.project-meta-list')
+            .css( 'color', $targetChildren.first().css('color') )
         ;
     }
 
@@ -87,17 +110,21 @@ function initMeta() {
         if ( !$('.project-meta').length || !$('.project-outer').length ) return;
 
         var $meta = $('.project-meta')
+        ,   $firstSection = $('.pd-section').first()
         ,   $target = $('.project-outer')
         ,   _h = $meta.height()
         ;
 
+        console.log( oldColor );
+
+        // Reset height & color
+        $firstSection[0].style.height = null;
+        if ( oldColor ) $meta.find('.project-meta-list')
+            .css( 'color', oldColor );
+
         $meta
-            .parent()
-                .css( 'height', 'auto' )
-                .end()
             .removeClass('is-wide')
-            .appendTo( $target )
-            ;
+            .appendTo( $target );
         ;
     }
 }
