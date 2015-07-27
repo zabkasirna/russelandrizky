@@ -154,7 +154,7 @@
                             <div class="post-fg">
                                 <div class="post-fg-head">
                                     <div class="post-fg-head-inner">
-                                        <h3 class="post-title"><a href="#">_<?php echo the_title(); ?></a></h3>
+                                        <h2 class="post-title"><a href="#">_<?php echo the_title(); ?></a></h2>
                                         <div class="post-term">
                                             <?php echo the_terms( $post->ID, 'project_type', '', '', '' ); ?>
                                         </div>
@@ -167,6 +167,12 @@
                                 ?>
                                 <div class="post-fg-body">
                                     <?php echo $_project_head_excerpt; ?>
+                                </div>
+                                <?php endif; ?>
+
+                                <?php if ( has_post_thumbnail() ) : ?>
+                                <div class="post-preloader">
+                                    <div class="pp-bar"></div>
                                 </div>
                                 <?php endif; ?>
                             </div>

@@ -21,6 +21,7 @@
 
         width: 100vw;
         height: 100vh;
+        min-height: x(6);
 
         &.w-full { width: 100vw; }
         &.h-full { height: 100vh; }
@@ -56,12 +57,17 @@
             margin: 0;
 
             text-decoration: none;
+
+            opacity: 0;
         }
 
         .post-fg {
             @include clearfix;
 
             position: relative;
+
+            top: 110%;
+
             padding: x(1);
 
             max-width: 100%;

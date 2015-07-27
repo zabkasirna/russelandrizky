@@ -5,7 +5,9 @@ var ProjectArchive = {
 function initBackground() {
     if ( !$('.post').length || !$('.post-bg').length ) return;
 
-    var $posts = $('.post');
+    var $posts = $('.post')
+    ,   _bgiCounter = 0
+    ;
 
     $posts.each( function( i ) {
 
@@ -16,31 +18,45 @@ function initBackground() {
         ,   srcPortrait = $bgi.data('src-portrait') || ''
         ;
 
-        console.log( Waypoint.Inview );
+        var waypointView = new Waypoint.Inview({
+            element: $self[0],
+            entered: function( dir ) {
+                // console.log( dir, $self );
 
-        // var waypointView = new Waypoint.Inview({
-        //     element: $self[0],
-        //     entered: function( dir ) {
-        //         console.log( dir, $self );
-        //     }
-        // });
+                setTimeout( function() {
+                    $bgi.background({
+                        "source": {
+                            "0px": srcPortrait,
+                            "980px": srcLandscape
+                        }
+                    });
+                }, 1000 );
 
-        $bgi.background({
-            "source": {
-                "0px": srcPortrait,
-                "980px": srcLandscape
+                setTimeout( function() {
+                    $self.find('.post-fg')
+                        .animate({
+                            top: 0
+                        }, 500 );
+                }, 100 );
+
+                this.destroy();
             }
         });
 
-        // $(this).on('loaded.background', function(e) {
-        //     _pciCounter ++;
+        $bgi.on('loaded.background', function(e) {
 
-        //     if ( _pciCounter === $pci.length ) {
-        //         // console.log( 'finish loading cover\'s assets' );
-        //         $('#preloader').addClass('has-loaded');
-        //     }
+            // console.log( 'finish loading bg on post', $(this) );
 
-        // });
+            setTimeout( function() {
+                $bgi.animate({
+                    opacity: 1
+                }, 300,
+                    function() {
+                        $('.post-preloader').remove();
+                    }
+                );
+            }, 500 );
+        });
     });
 }
 

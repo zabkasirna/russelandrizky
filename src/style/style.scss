@@ -51,6 +51,7 @@ $old: false;
 @import "object/project/description";
 @import "object/project/meta";
 @import "object/project/loop";
+@import "object/project/preloader";
 
 /* ------ {{ project-type object }} ------ */
 @import "object/project-type/header";

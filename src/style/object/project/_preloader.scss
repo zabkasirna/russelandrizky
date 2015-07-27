@@ -1,0 +1,34 @@
+.post-preloader {
+
+    @include clearfix;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    padding: 0 4px;
+
+    // display: block;
+
+    .pp-bar {
+        
+        animation: pp-keys 5s cubic-bezier(.17,.37,.43,.67) infinite;
+
+        position: relative;
+        left: 0;
+        width: 5%;
+        height: 100%;
+        background-color: $grey;
+    }
+}
+
+@keyframes pp-keys {
+    0%,100% {transform: translate(0,0);}
+
+    50% {
+        left: 90%;
+        background-color: currentColor;
+        width: 10%;
+    }
+}
