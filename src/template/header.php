@@ -33,7 +33,7 @@
 
 <?php
     global $wp_query;
-    $post_id = $wp_query -> post -> ID;
+    $post_id = $wp_query->post->ID;
 ?>
 
 <?php
