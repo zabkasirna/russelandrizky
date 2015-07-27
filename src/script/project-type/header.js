@@ -24,13 +24,13 @@ function initBackground() {
             }
         });
 
-        $(this).find('.ptbgi').on('loaded.background', function(e) {
+        $el.on('loaded.background', function(e) {
             _bgiCounter ++;
 
             if ( _bgiCounter === $bgi.length ) {
                 // console.log( 'finish loading cover\'s assets' );
                 $('#preloader').addClass('has-loaded');
-                bgiRecheckStop();
+                // bgiRecheckStop();
             }
 
         });
@@ -55,12 +55,13 @@ function initBackground() {
     }
 
     function bgiRecheckStart() {
+        // console.log('s');
         if ( bgiRecheckId ) return;
-        bgiRecheckId = setInterval( bgiRecheck, 2000 );
+        bgiRecheckId = setInterval( bgiRecheck, 5000 );
         bgiRecheck();
     }
 
-    bgiRecheckStart();
+    // bgiRecheckStart();
 
     if ( $bgi.length > 1 ) {
         $bgOuter.carousel({

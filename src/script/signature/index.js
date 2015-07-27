@@ -21,16 +21,20 @@ function initSignature() {
 
     console.debug( _logSirna );
 
-    $.ajax({
-        method: 'GET',
-        url: 'https://api.github.com/repos/zabkasirna/russelandrizky/commits/master',
-        dataType: 'json'
-    })
-    .done( function(d) {
-        console.debug(
-            'latest_commit: ' + d.url
-        );
-    });
+    // $.ajax({
+    //     method: 'GET',
+    //     url: 'https://api.github.com/repos/zabkasirna/russelandrizky/commits/master',
+    //     dataType: 'json'
+    // })
+    // .done( function(d) {
+    //     console.debug(
+    //         'latest_commit: ' + d.url
+    //     );
+    // })
+    // .fail( function( jqXHR, textStatus, errorThrown ) {
+    //     jqXHR.abort()
+    // })
+    ;
 }
 
 module.exports = Signature;

@@ -35,37 +35,9 @@ function initCover() {
             ) {
                 // console.log( 'finish loading cover\'s assets' );
                 $('#preloader').addClass('has-loaded');
-                bgiRecheckStop();
             }
-
         });
     });
-    
-    var bgiRecheckId;
-
-    function bgiRecheck() {
-        var $imagesToValidate = $pci.parent().find('img');
-        if (
-            $imagesToValidate.length === $pci.length ||
-            !$('#preloader').hasClass('has-loaded') ) {
-
-                $('#preloader').addClass('has-loaded');
-                bgiRecheckStop();
-        }
-    }
-
-    function bgiRecheckStop() {
-        clearInterval( bgiRecheckId );
-        bgiRecheckId = null;
-    }
-
-    function bgiRecheckStart() {
-        if ( bgiRecheckId ) return;
-        bgiRecheckId = setInterval( bgiRecheck, 2000 );
-        bgiRecheck();
-    }
-
-    bgiRecheckStart();
 
     if ( $pci.length > 1 ) {
 
